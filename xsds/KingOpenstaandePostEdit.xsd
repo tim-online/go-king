@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_OPENSTAANDE_POSTEN_EDIT">
+		<xs:annotation>
+			<xs:documentation>King wijzigen fiattering openstaande posten versie 18-08-2014</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="OPENSTAANDE_POSTEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="OPENSTAANDE_POST" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="OSP_NAW_NUMMER" type="INT10"/>
+                    
+                    <xs:element name="OSP_FACTUURNUMMER" minOccurs="1">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="40"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    
+                    <xs:element name="OSP_GEFIATTEERD" type="BOOL" default="true" minOccurs="1"/>
+
+									</xs:all>
+								</xs:complexType>
+							</xs:element>							
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+  <xs:simpleType name="INT10">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+  <xs:simpleType name="BOOL">
+    <xs:annotation>
+      <xs:documentation>vervangt standaard boolean</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="false"/>
+      <xs:enumeration value="true"/>
+      <xs:enumeration value="False"/>
+      <xs:enumeration value="True"/>
+      <xs:enumeration value="FALSE"/>
+      <xs:enumeration value="TRUE"/>
+      <xs:enumeration value="0"/>
+      <xs:enumeration value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

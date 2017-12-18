@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_DIGITAAL_ARCHIEF">
+		<xs:annotation>
+			<xs:documentation>King digitaal archief versie 24-01-2014</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DIGITAAL_ARCHIEF">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DIGITAAL_ARCHIEFSTUK" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="DAR_ARCHIEFSOORT">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DAR_EXTERN_ID" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DAR_DATUM" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="xs:date"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DAR_AANGEMAAKT_DOOR" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DAR_AANGEMAAKT_OP" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="xs:dateTime"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DAR_INTERNE_CODE" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DAR_EXTERNE_CODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DAR_NAW_SOORT" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="DEBITEUR"/>
+													<xs:enumeration value="CREDITEUR"/>
+													<xs:enumeration value="RELATIE"/>
+													<xs:enumeration value="GEEN"/>
+													<xs:enumeration value="NOG_TOEWIJZEN"/>
+													<xs:enumeration value=""/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DAR_NAW_BESTAND" type="xs:string" minOccurs="0"/>
+										<xs:element name="DAR_NAW_NUMMER" default="0" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:totalDigits value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DAR_CONTACTPERSOON" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="INT3"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DAR_OPMERKING" type="xs:string" minOccurs="0"/>
+										<xs:element name="DAR_BESTANDSNAAM" nillable="false">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="255"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DAR_VERWERKSOORT" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="GEEN"/>
+													<xs:enumeration value="INVOEREN_JOURNAALPOSTEN"/>
+													<xs:enumeration value="OVERIGE"/>
+													<xs:enumeration value=""/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DAR_DAGBOEK" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DAR_AFGEHANDELD" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="INT3">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

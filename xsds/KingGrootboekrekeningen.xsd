@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_GROOTBOEKREKENINGEN">
+		<xs:annotation>
+			<xs:documentation>King grootboekrekeningen versie 24-01-2014</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="GROOTBOEKREKENINGEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="REKENING" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="RKS_NUMMER">
+											<xs:annotation>
+												<xs:documentation>Hoofdrekeningnummer</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:totalDigits value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_KPNUMMER" default="0" nillable="true" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Kostenplaats</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:totalDigits value="8"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_KDNUMMER" default="0" nillable="true" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Kostendrager</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:totalDigits value="8"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_ZOEKCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_OMSCHRIJVING" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_SOORT" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="BAL"/>
+													<xs:enumeration value="ACT"/>
+													<xs:enumeration value="PAS"/>
+													<xs:enumeration value="RES"/>
+													<xs:enumeration value="KOS"/>
+													<xs:enumeration value="OPB"/>
+													<xs:enumeration value="DEB"/>
+													<xs:enumeration value="CRED"/>
+													<xs:enumeration value=""/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_BOEKZIJDE" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="DEB"/>
+													<xs:enumeration value="CRED"/>
+													<xs:enumeration value="GEENVOORKEUR"/>
+													<xs:enumeration value="DAGBOEK"/>
+													<xs:enumeration value=""/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_AFDRUKZIJDE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="DEB"/>
+													<xs:enumeration value="CRED"/>
+													<xs:enumeration value="SALDO"/>
+													<xs:enumeration value=""/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_VALUTACODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_BTWCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:maxInclusive value="999"/>
+													<xs:minInclusive value="0"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_TEGENREKENING" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="28"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_INV_REFERENTIE" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_REFERENTIE_IN_BEGINBALANS" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_GEBLOKKEERD" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_AANTALLEN" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_TARIEFINKOOP" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="TARIEF"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_TARIEFVERKOOP" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="TARIEF"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RKS_OPMERKING" minOccurs="0"/>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TARIEF">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="12"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

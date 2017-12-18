@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_BESTELADVIEZEN">
+		<xs:annotation>
+			<xs:documentation>King besteladviezen versie 04-02-2013</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="BESTELADVIEZEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="BESTELADVIES" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="BESTELADVIESKOP">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="BAK_OMSCHRIJVING">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="40"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="BESTELADVIESREGELS">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="BESTELADVIESREGEL" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="BAR_ARTIKELNUMMER">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BAR_PARTIJNUMMER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BAR_LEVERANCIERNUMMER" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="xs:integer"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BAR_MAGAZIJNCODE">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:integer">
+																			<xs:minInclusive value="0"/>
+																			<xs:maxInclusive value="999"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BAR_INKOOPEENHEID" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BAR_AANTAL_IN_VOORRAADEENHEDEN" type="BEDRAG"/>
+																<xs:element name="BAR_ARTIKELOMSCHRIJVING" type="xs:string" minOccurs="0"/>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BEDRAG">
+		<xs:annotation>
+			<xs:documentation>positief bedrag</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

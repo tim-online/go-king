@@ -1,0 +1,952 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_ORDERS">
+		<xs:annotation>
+			<xs:documentation>King orders versie 19-09-2016</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ORDERS">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ORDER" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ORDERKOP">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="ORK_ORDERNUMMER" default="0" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="xs:integer"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_EXTERNORDERNUMMER" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="20"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_DEBITEURNUMMER" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="INT10"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_DEBITEUREANCODE" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Debiteur identificatie kan obv intern King-nummer of obv EAN-code.</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="13"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_CONTACTPERSOON" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="INT3"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VERTEGENWOORDIGER" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="INT3"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_REFERENTIE" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="xs:string"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_ORDERDATUM" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="xs:date"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_LEVERDATUM" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="xs:date"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_INKOOPCOMBINATIE" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_DEBITEURNUMMERFACTUUR" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="INT10"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_DEBITEUREANCODEFACTUUR" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="13"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_DEBITEURNUMMEROMZET" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="INT10"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_DEBITEUREANCODEOMZET" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="13"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_DEBITEURNUMMERPRIJZEN" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="INT10"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_DEBITEUREANCODEPRIJZEN" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="13"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_FACTUURADRESSOORT" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="VEST"/>
+																<xs:enumeration value="COR"/>
+																<xs:enumeration value=""/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_FACTUURADRESEANCODE" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="13"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VERZENDADRESSOORT" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="VEST"/>
+																<xs:enumeration value="COR"/>
+																<xs:enumeration value="VERZ"/>
+																<xs:enumeration value="FACT_VEST"/>
+																<xs:enumeration value="FACT_COR"/>
+																<xs:enumeration value="FACT_VERZ"/>
+																<xs:enumeration value=""/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VERZENDADRESNUMMER" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="INT3"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VERZENDADRESEANCODE" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Verzendadres kan gekozen worden obv King-nummer of EAN-code</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="13"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VERZENDADRES" type="KING_ADRES" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Er kan ook een compleet adres worden meegestuurd, dit wordt bij de debiteur toegevoegd</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ORK_EINDBESTEMMINGSOORT" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="VEST"/>
+																<xs:enumeration value="COR"/>
+																<xs:enumeration value="VERZ"/>
+																<xs:enumeration value="NVT"/>
+																<xs:enumeration value=""/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_EINDBESTEMMINGADRESNUMMER" type="xs:integer" minOccurs="0"/>
+													<xs:element name="ORK_EINDBESTEMMINGADRESEANCODE" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Eindbestemmingsadres kan gekozen worden obv King-nummer of EAN-code</xs:documentation>
+														</xs:annotation>
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="13"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_EINDBESTEMMINGADRES" type="KING_ADRES" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Er kan ook een compleet adres worden meegestuurd, dit wordt bij de debiteur toegevoegd</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ORK_PRIJZENINEXBTW" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="INCLBTW"/>
+																<xs:enumeration value="EXCLBTW"/>
+																<xs:enumeration value=""/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VERZAMELLIJST" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="WEL"/>
+																<xs:enumeration value="NIET"/>
+																<xs:enumeration value=""/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_DEELLEVERING_TOEGESTAAN" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="TOEGESTAAN"/>
+																<xs:enumeration value="NIET_TOEGESTAAN"/>
+																<xs:enumeration value=""/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_APARTEFACTUUR" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="JA"/>
+																<xs:enumeration value="NEE"/>
+																<xs:enumeration value="PERCONTACTPERSOON"/>
+																<xs:enumeration value="PERVERZENDADRES"/>
+																<xs:enumeration value="PERCONTACTPERSOONENVERZENDADRES"/>
+																<xs:enumeration value=""/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_KORTINGSPERCENTAGE" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="PERCENTAGE_NEG"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_MAGAZIJN" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="INT3"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VALUTACODE" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="3"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_BETALINGSCONDITIE" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="INT3"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_LEVERINGSCONDITIE" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="INT3"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_KOSTENPLAATS" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="INT8"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_KOSTENDRAGER" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="INT8"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_INCASSOREKENING" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="34"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_EDIORDER" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_EDIBUFFER" type="xs:string" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>hier mag alles in worden gezet, dit wordt bewaard, en bij de facturering/levering weer geëxporteerd.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ORK_MEENEMENINCBSAANGIFTE" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_CBSGOEDERENSTROOM" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="1"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_CBSSTATISCHSTELSEL" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="2"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_CBSLANDBESTEMMING" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="3"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_CBSVERKEERSGEBIED" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="40"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_CBSVERVOERSWIJZE" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="1"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_CBSCONTAINERVERVOER" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="1"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_GOEDGEKEURD" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VRIJVOORVERZAMELLIJST" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VERZAMELLIJSTAFGEDRUKT" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VERZAMELLIJSTVERWERKT" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VRIJVOORLEVERING" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VRIJVOORFACTURERING" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_OPMERKING" type="xs:string" minOccurs="0"/>
+													<xs:element name="ORK_ISABCLEVERING" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VERVOERDER" minOccurs="0">
+														<xs:complexType>
+                              <xs:simpleContent>
+                                <xs:restriction base="VervoerderType">
+                                  <xs:maxLength value="40"/>
+                                </xs:restriction>
+                              </xs:simpleContent>
+                            </xs:complexType>
+													</xs:element>
+													<xs:element name="ORK_WEBWINKEL_ID" minOccurs="0">
+              							<xs:simpleType>
+              								<xs:restriction base="xs:string">
+              									<xs:maxLength value="20"/>
+              								</xs:restriction>
+              							</xs:simpleType>
+              						</xs:element>
+													<xs:element name="ORK_VRIJERUBRIEKEN" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="ORK_VRIJERUBRIEK" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="ORK_VRIJERUBRIEK_NAAM">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="40"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="ORK_VRIJERUBRIEK_WAARDE" minOccurs="0"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ORDERCOLLI" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence minOccurs="0">
+													<xs:element name="ORDERCOLLO" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:all minOccurs="0">
+																<xs:element name="ORCL_REGELNUMMER" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="INT3"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORCL_COLLOTYPE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORCL_CODE_BIJ_VERVOERDER" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Alleen voor export. Wordt niet verwerkt bij import.</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORCL_AANTAL" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="INT10"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORCL_GEWICHT" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORCL_VOLUME" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORCL_HOOGTE" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORCL_BREEDTE" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORCL_DIEPTE" nillable="true" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Dit element zal in een volgende release verdwijnen. Gebruik COLLO_LENGTE.</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORCL_LENGTE" nillable="true" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Dit element vervangt COLLO_DIEPTE.</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORCL_LENGTE_EENHEID" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Alleen voor export. Wordt niet verwerkt bij import.</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="10"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORCL_TRACKTRACE_CODE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="40"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORCL_TRACKTRACE_URL" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="255"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORCL_OPMERKING" type="xs:string" minOccurs="0"/>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ORDERREGELS" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence minOccurs="0">
+													<xs:element name="ORDERREGEL" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence minOccurs="0">
+																<xs:element name="ORR_GID" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="INT8"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_EXTERNORDERREGELNUMMER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_SOORT" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Artikel/Tarief/Tekstblok</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value="ART"/>
+																			<xs:enumeration value="TAR"/>
+																			<xs:enumeration value="TEKST"/>
+																			<xs:enumeration value=""/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_ARTIKELNUMMER" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Kan dus ook Tarief- of Tekstbloknummer  zijn</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_ARTIKELEANCODE" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Artikel kan ook gekozen worden obv eancode</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="14"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_PARTIJNUMMER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+                                <xs:element name="ORR_VERKOOPEENHEID" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:maxLength value="20"/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+																<xs:element name="ORR_TEKSTOPFACTUUR" type="xs:string" minOccurs="0"/>
+																<xs:element name="ORR_AANTALBESTELD" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_AANTAL_VOORRAADEENHEDEN_IN_VERKOOPEENHEID" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_AANTALDEZELEVERING" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_AANTALDEZELEVERINGVRRDEENH" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_AANTALDEZEFACTURERING" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_AANTALDEZEFACTURERINGVRRDEENH" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_KOSTPRIJS" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="POSDECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+                                <xs:element name="ORR_EENHEIDPRIJSPER" nillable="true" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:enumeration value="VERKOOPEENHEID"/>
+                                      <xs:enumeration value="VOORRAADEENHEDEN"/>
+                                      <xs:enumeration value=""/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+																<xs:element name="ORR_PRIJS" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="POSDECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:choice minOccurs="0">
+																	<xs:element name="ORR_KORTINGSPERCENTAGE1" nillable="true">
+																		<xs:simpleType>
+																			<xs:list itemType="PERCENTAGE_NEG"/>
+																		</xs:simpleType>
+																	</xs:element>
+																	<xs:element name="ORR_KORTINGSBEDRAG1" nillable="true">
+																		<xs:simpleType>
+																			<xs:list itemType="DECIMAL"/>
+																		</xs:simpleType>
+																	</xs:element>
+																</xs:choice>
+																<xs:element name="ORR_KORTINGSPERCENTAGE2" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="PERCENTAGE_NEG"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_BTWCODE" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="INT3"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_LEVERDATUM" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="xs:date"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_NEGATIEVE_AANTALLEN_RESERVEREN" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_MAGAZIJN" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="INT3"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_CBSTRANSACTIE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="1"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_KOSTENPLAATS" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="INT8"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_KOSTENDRAGER" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="INT8"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_EDIBUFFER" type="xs:string" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>hier mag alles in worden gezet, dit wordt bewaard, en bij de facturering/levering weer geëxporteerd.</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+																<xs:element name="ORR_DIRECTE_INKOOP" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_OMSCHRIJVING_OVERNEMEN_NAAR_BESTELLING" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_LEVERANCIER_DIRECTE_INKOOP" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="INT8"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_DIR_INK_INKOOP_EENHEID" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_DIRECTE_LEVERING" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value="JA"/>
+																			<xs:enumeration value="NEE"/>
+																			<xs:enumeration value="VOLGENSLEVEENHEID"/>
+																			<xs:enumeration value=""/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORDERREGELDETAILS" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="ORDERREGELDETAIL" minOccurs="0" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:all>
+																						<xs:element name="ORD_MAGAZIJN" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="INT3"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ORD_LOCATIECODE" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ORD_PARTIJNUMMER" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ORD_SERIENUMMER" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ORD_VERKOOPEENHEID" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ORD_AANTALDEZELEVERING" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="DECIMAL"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ORD_AANTALDEZELEVERINGVRRDEENH" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="DECIMAL"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ORD_COLLI_IDENTIFIER_SSCCID" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="30"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																					</xs:all>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+															<xs:attribute name="action" use="optional">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="delete"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="action" use="optional">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="delete"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="KING_ADRES">
+		<xs:annotation>
+			<xs:documentation>Standaard KING adres blok</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="ADR_NAAM1" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_NAAM2" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_STRAAT" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_HUISNUMMER" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_POSTCODE" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_WOONPLAATS" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_LAND" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_EMAIL" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_TELEFOON" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_TELEFOON2" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_TELEFAX" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_OPMERKING" type="xs:string" minOccurs="0"/>
+		</xs:all>
+	</xs:complexType>
+  <xs:complexType name="VervoerderType">
+    <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute name="action" use="optional">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="delete"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:attribute>
+        </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>                          
+	<xs:simpleType name="DECIMAL">
+		<xs:annotation>
+			<xs:documentation>Bedoelt voor negatieve bedragen waar het nodig is</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-9999999999.999"/>
+			<xs:maxExclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="POSDECIMAL">
+		<xs:annotation>
+			<xs:documentation>Bedoelt voor positieve bedragen</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxExclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="INT8">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="INT10">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="INT3">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PERCENTAGE_NEG">
+		<xs:restriction base="xs:decimal">
+			<xs:maxInclusive value="100"/>
+			<xs:fractionDigits value="2"/>
+			<xs:minInclusive value="-100"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

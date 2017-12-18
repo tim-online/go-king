@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_KOSTENDRAGERS">
+		<xs:annotation>
+			<xs:documentation>King kostendragers versie 04-02-2013</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="KOSTENDRAGERS">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="KOSTENDRAGER" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="KD_NUMMER">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="8"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="KD_ZOEKCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="KD_OMSCHRIJVING" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

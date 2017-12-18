@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="KING_ARTIKELEN">
+		<xs:annotation>
+			<xs:documentation>King artikelen versie 19-09-2016</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PRIJZEN_DIRECT_VERWERKEN" type="BOOL" minOccurs="0"/>
+				<xs:element name="ARTIKELEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ARTIKEL" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ART_NUMMER">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_ZOEKCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_OMSCHRIJVING" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_OPBRENGSTGROEP" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="UINT4"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_AANTALDECIMALENAANTALLEN" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="DECIMALS"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_AANTALDECIMALENPRIJZEN" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="DECIMALS"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_EENHEID" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:choice minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>OF het gewicht per eenheid opgeven
+OF een combinatie van "Gewicht per" en het totaal Gewicht</xs:documentation>
+											</xs:annotation>
+											<xs:element name="ART_GEWICHTPEREENHEID" nillable="true" minOccurs="0">
+												<xs:annotation>
+													<xs:documentation>Dit is het gewicht per 1 eenheid</xs:documentation>
+												</xs:annotation>
+												<xs:simpleType>
+													<xs:list itemType="King_bedragSimple"/>
+												</xs:simpleType>
+											</xs:element>
+											<xs:sequence minOccurs="0">
+												<xs:element name="ART_GEWICHTPER" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Dit is het aantal waarvoor het gewicht geldt</xs:documentation>
+													</xs:annotation>
+													<xs:simpleType>
+														<xs:list itemType="King_bedragSimple"/>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element name="ART_GEWICHT" nillable="true">
+													<xs:annotation>
+														<xs:documentation>Dit is het gewicht per "Gewicht per"</xs:documentation>
+													</xs:annotation>
+													<xs:simpleType>
+														<xs:list itemType="King_bedragSimple"/>
+													</xs:simpleType>
+												</xs:element>
+											</xs:sequence>
+										</xs:choice>
+										<xs:choice minOccurs="0">
+											<xs:element name="ART_VOLUMEPEREENHEID" nillable="true" minOccurs="0">
+												<xs:simpleType>
+													<xs:list itemType="King_bedragSimple"/>
+												</xs:simpleType>
+											</xs:element>
+											<xs:sequence minOccurs="0">
+												<xs:element name="ART_VOLUMEPER" nillable="true">
+													<xs:simpleType>
+														<xs:list itemType="King_bedragSimple"/>
+													</xs:simpleType>
+												</xs:element>
+												<xs:element name="ART_VOLUME" nillable="true">
+													<xs:simpleType>
+														<xs:list itemType="King_bedragSimple"/>
+													</xs:simpleType>
+												</xs:element>
+											</xs:sequence>
+										</xs:choice>
+										<xs:element name="ART_CBS_GOEDERENCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="8"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_CBS_MAATSTAF" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="King_bedragSimple"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_BTWCODEINKOOP" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="UINT3"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_BTWCODEVERKOOP" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="UINT3"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_PRIJZENAUTOMATISCHBEREKENEN" default="NIET" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="NIET"/>
+													<xs:enumeration value="VASTEGEG"/>
+													<xs:enumeration value="ARTIKEL"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_BEREKENPRIJS" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="KOSTPRIJS"/>
+													<xs:enumeration value="VERKOOPPRIJS"/>
+													<xs:enumeration value=""/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_MARGEBASIS" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="KOSTPRIJS"/>
+													<xs:enumeration value="VERKOOPPRIJS"/>
+													<xs:enumeration value=""/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_MARGEPERCENTAGE" default="0" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:minInclusive value="0"/>
+													<xs:fractionDigits value="2"/>
+													<xs:maxInclusive value="999.99"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_PRIJSPER" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="King_bedragSimple"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_KOSTPRIJS" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="King_bedragSimple"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:choice minOccurs="0">
+											<xs:element name="ART_VERKOOPPRIJSINCLBTW" nillable="true">
+												<xs:simpleType>
+													<xs:list itemType="King_bedragSimple"/>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="ART_VERKOOPPRIJSEXCLBTW" nillable="true">
+												<xs:simpleType>
+													<xs:list itemType="King_bedragSimple"/>
+												</xs:simpleType>
+											</xs:element>
+										</xs:choice>
+										<xs:choice minOccurs="0">
+											<xs:element name="ART_KORTINGSPERCENTAGE" nillable="true">
+												<xs:simpleType>
+													<xs:list itemType="PERCENTAGE_NEG"/>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="ART_KORTINGSBEDRAG" nillable="true">
+												<xs:simpleType>
+													<xs:list itemType="NegatiefBedrag"/>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element name="ART_STAFFELTABEL">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:maxLength value="10"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+										</xs:choice>
+										<xs:choice minOccurs="0">
+											<xs:element name="ART_ADVIESPRIJSINCLBTW" default="0" nillable="true">
+												<xs:complexType>
+													<xs:simpleContent>
+														<xs:restriction base="King_bedrag"/>
+													</xs:simpleContent>
+												</xs:complexType>
+											</xs:element>
+											<xs:element name="ART_ADVIESPRIJSEXCLBTW" default="0" nillable="true">
+												<xs:complexType>
+													<xs:simpleContent>
+														<xs:restriction base="King_bedrag"/>
+													</xs:simpleContent>
+												</xs:complexType>
+											</xs:element>
+										</xs:choice>
+										<xs:element name="ART_TEKSTWIJZIGENBIJORDERINVOER" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_TAALOMSCHRIJVINGEN" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ART_TAALOMSCHRIJVING" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="ART_TAALOMSCHRIJVING_TAALCODE">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ART_TAALOMSCHRIJVING_TEKST" type="xs:string"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ART_EANCODES" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ART_EANCODE" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="ART_EANCODE_NUMMER">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="14"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ART_EANCODE_ISSTANDAARD" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+                    <xs:element name="ART_VOORRAADEENHEID_EANCODE" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:maxLength value="14"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+										<xs:element name="ART_VERKOOPEENHEDEN" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ART_VERKOOPEENHEID" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+                                <xs:element name="ART_VERKOOPEENHEID_VERKOOPEENHEID">
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:maxLength value="20"/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_AANTAL_IN_EENHEID" nillable="true" minOccurs="0">
+                                    <xs:simpleType>
+                                      <xs:list itemType="King_bedragSimple"/>
+                                    </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_AANTAL_KAN_VERSCHILLEN" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:enumeration value="VASTAANTAL"/>
+                                      <xs:enumeration value="AFWIJKENDBIJAANTALBESTELD"/>
+                                      <xs:enumeration value="AFWIJKENDBIJLEVERINGFACTURERING"/>
+                                      <xs:enumeration value=""/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_EANCODE" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:maxLength value="14"/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_IS_GEBLOKKEERD_VOOR_VERKOOP" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_IS_STANDAARD_VERKOOPEENHEID" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_DECIMALEN_AANTAL" nillable="true" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:integer">
+                                      <xs:totalDigits value="1"/>
+                                      <xs:maxInclusive value="4"/>
+                                      <xs:minInclusive value="0"/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_HEEFT_AFWIJKEND_GEWICHT_VOLUME" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_GEWICHT_PER" nillable="true" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:list itemType="King_bedragSimple"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_GEWICHT" nillable="true" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:list itemType="King_bedragSimple"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_VOLUME_PER" nillable="true" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:list itemType="King_bedragSimple"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_VOLUME" nillable="true" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:list itemType="King_bedragSimple"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_HEEFT_APARTE_VERKOOPPRIJS" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:enumeration value="GEENAPARTEPRIJSKORTING"/>
+                                      <xs:enumeration value="ALLEENAPARTEKORTING"/>
+                                      <xs:enumeration value="APARTEPRIJSENKORTING"/>
+                                      <xs:enumeration value=""/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_PRIJZEN_PER" nillable="true" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:enumeration value="VERKOOPEENHEID"/>
+                                      <xs:enumeration value="VOORRAADEENHEDEN"/>
+                                      <xs:enumeration value=""/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_IS_VERKOOPPRIJS_INCLUSIEF_BTW" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_VERKOOPPRIJS" nillable="true" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:list itemType="King_bedragSimple"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_STAFFELTABEL" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:maxLength value="10"/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_KORTINGSPERCENTAGE" nillable="true" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:list itemType="PERCENTAGE_NEG"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_KORTINGSBEDRAG" nillable="true" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:list itemType="NegatiefBedrag"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_IS_ADVIESPRIJS_INCLUSIEF_BTW" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+                                </xs:element>
+                                <xs:element name="ART_VERKOOPEENHEID_ADVIESPRIJS" nillable="true" minOccurs="0">
+                                  <xs:simpleType>
+                                    <xs:list itemType="King_bedragSimple"/>
+                                  </xs:simpleType>
+                                </xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ART_INKOOPGEGEVENS" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Dit is het element dat vanaf 5.43 gebruikt wordt om meerdere leveranciers en inkoopeenheden uit te wisselen.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ART_INKOOPGEGEVEN" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="ART_INKOOP_LEVERANCIER_NUMMER" type="xs:integer"/>
+																<xs:element name="ART_INKOOP_LEVERANCIER_ISSTANDAARD" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ART_INKOOPEENHEDEN" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="ART_INKOOPEENHEID" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="ART_INKOOPEENHEID_OMSCHRIJVING">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_ISSTANDAARD" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="BOOL"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_OMSCHRIJVING_BIJLEVERANCIER" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_AANTAL_IN_INKOOPEENHEID" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="King_bedragSimple"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_AANTALKANVERSCHILLEN" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="BOOL"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_ARTIKELNUMMERLEVERANCIER" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_EANCODE" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="14"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_ARTIKELOMSCHRIJVINGLEVERANCIER" type="xs:string" minOccurs="0"/>
+																						<xs:element name="ART_INKOOPEENHEID_LEVERTIJDINDAGEN" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="UINT3"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_KWALITEIT" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="KWALITEIT"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_DIRECTELEVERING" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:enumeration value="NIETTOEGESTAAN"/>
+																									<xs:enumeration value="TOEGESTAANNIETVIADIRECTELEVERING"/>
+																									<xs:enumeration value="TOEGESTAANVIADIRECTELEVERING"/>
+																									<xs:enumeration value=""/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_BESTELGROOTTE" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="King_bedragSimple"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_MINIMUMAFNAME" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="King_bedragSimple"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_APARTE_INKOOPPRIJS_BIJHOUDEN" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="BOOL"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_INKOOPPRIJSPER" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:enumeration value="INKOOPEENHEID"/>
+																									<xs:enumeration value="VOORRAADEENHEDEN"/>
+																									<xs:enumeration value=""/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_VALUTACODE" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="3"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ART_INKOOPEENHEID_INKOOPPRIJS" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="King_bedragSimple"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:choice minOccurs="0">
+																							<xs:element name="ART_INKOOPEENHEID_KORTINGSPERCENTAGE" nillable="true">
+																								<xs:simpleType>
+																									<xs:list itemType="PERCENTAGE_NEG"/>
+																								</xs:simpleType>
+																							</xs:element>
+																							<xs:element name="ART_INKOOPEENHEID_KORTINGSBEDRAG" type="King_bedrag"/>
+																							<xs:element name="ART_INKOOPEENHEID_STAFFELTABEL">
+																								<xs:simpleType>
+																									<xs:restriction base="xs:string">
+																										<xs:maxLength value="10"/>
+																									</xs:restriction>
+																								</xs:simpleType>
+																							</xs:element>
+																						</xs:choice>
+																						<xs:choice minOccurs="0">
+																							<xs:element name="ART_INKOOPEENHEID_KOSTPRIJSFACTOR" nillable="true" minOccurs="0">
+																								<xs:simpleType>
+																									<xs:list itemType="FACTOR"/>
+																								</xs:simpleType>
+																							</xs:element>
+																							<xs:element name="ART_INKOOPEENHEID_TOESLAG" type="King_bedrag" minOccurs="0"/>
+																						</xs:choice>
+																						<xs:element name="ART_INKOOPEENHEID_OPMERKINGEN" type="xs:string" minOccurs="0"/>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ART_OPMERKING" type="xs:string" minOccurs="0"/>
+										<xs:element name="ART_VOORRAADARTIKEL" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_GEBLOKKEERDVOORVERKOOP" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_GEBLOKKEERDVOORINKOOP" type="BOOL" default="false" nillable="true" minOccurs="0"/>
+										<xs:element name="ART_GEBLOKKEERDVOORMAGAZIJNONTVANGST" type="BOOL" default="false" nillable="true" minOccurs="0"/>
+										<xs:element name="ART_VERKOOPMUTATIEBIJHOUDEN" type="BOOL" default="true" nillable="true" minOccurs="0"/>
+										<xs:element name="ART_INKOOPMUTATIEBIJHOUDEN" type="BOOL" default="true" nillable="true" minOccurs="0"/>
+										<xs:element name="ART_MEENEMENINBESTELADVIEZEN" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_MEENEMENINPRODUCTIEADVIEZEN" type="BOOL" default="false" nillable="true" minOccurs="0"/>
+										<xs:element name="ART_KOSTPRIJSWIJZIGENBIJORDERINVOER" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_BESTELLENVIADIRECTEINKOOP" type="BOOL" default="false" minOccurs="0"/>
+										<xs:element name="ART_OMSCHRIJVINGVERKOOPORDEROVERNEMEN" type="BOOL" default="false" minOccurs="0"/>
+										<xs:element name="ART_BESTELLENVOORDIRECTELEVERING" default="NEE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="JA"/>
+													<xs:enumeration value="NEE"/>
+													<xs:enumeration value="VOLGENSLEVEENHEID"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<!--ACW 14-11-2011 bug 34141 Tags zonder naam kan natuurlijk niet.-->
+										<!--<xs:element name="" type="xs:boolean" minOccurs="0"/>-->
+										<xs:element name="ART_WEBARTIKEL" default="false" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_WEBWINKELS" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ART_WEBWINKEL" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="ART_WEBWINKEL_ID">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="action" use="optional">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:enumeration value="delete"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ART_WEBBESTELGROOTTE" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="King_bedragSimple"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_WEBLEVERTIJD" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="UINT3"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_WEBTONENVANAF" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="xs:date"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_WEBTONENTM" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="xs:date"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_AFBEELDINGKLEIN" type="xs:string" minOccurs="0"/>
+										<xs:element name="ART_AFBEELDINGGROOT" type="xs:string" minOccurs="0"/>
+										<xs:element name="ART_AFBEELDINGKLEIN_BESTANDSINHOUD" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Deze tag bevat het complete bestand, base64 encoded.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="ART_AFBEELDINGGROOT_BESTANDSINHOUD" minOccurs="0"/>
+										<xs:element name="ART_PARTIJ_REGISTREREN" type="BOOL" default="false" minOccurs="0"/>
+										<xs:element name="ART_PARTIJ_AUTO_NUM" type="BOOL" default="false" minOccurs="0"/>
+										<xs:element name="ART_PARTIJ_AUTO_NUM_TEKST_VOOR" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_PARTIJ_AUTO_NUM_VOLGNR" default="0" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:totalDigits value="10"/>
+													<xs:minInclusive value="0"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_PARTIJ_AUTO_NUM_UITVULLEN" type="BOOL" default="false" minOccurs="0"/>
+										<xs:element name="ART_PARTIJ_AUTO_NUM_LENGTE" default="2" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_PARTIJ_AUTO_NUM_TEKST_ACHTER" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_PARTIJ_VERPLICHT_BIJ_ORDERINVOER" type="BOOL" default="false" minOccurs="0"/>
+										<xs:element name="ART_PARTIJ_APARTE_KOSTPRIJS" type="BOOL" default="false" minOccurs="0"/>
+										<xs:element name="ART_PARTIJ_APARTE_KOSTPRIJS_DEFAULT" default="LEEG" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="LEEG"/>
+													<xs:enumeration value="KOSTPRIJS"/>
+													<xs:enumeration value="INKOOPPRIJS"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_PARTIJ_APARTE_VERKOOPPRIJS" type="BOOL" default="false" minOccurs="0"/>
+										<xs:element name="ART_PARTIJ_APARTE_VERKOOPPRIJS_DEFAULT" default="LEEG" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="LEEG"/>
+													<xs:enumeration value="ARTIKELPRIJS"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_PARTIJ_APARTE_TEKSTOPFACTUUR" type="BOOL" default="false" minOccurs="0"/>
+										<xs:element name="ART_PARTIJ_APARTE_TEKSTOPFACTUUR_DEFAULT" default="LEEG" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="LEEG"/>
+													<xs:enumeration value="ARTIKELTEKSTOPFACTUUR"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_PARTIJ_CONTROLE_OUDERDOM" type="BOOL" default="false" minOccurs="0"/>
+										<xs:element name="ART_PARTIJ_CONTROLE_OUDERDOM_DEFAULT" default="PRODUCTIEDATUM" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="PRODUCTIEDATUM"/>
+													<xs:enumeration value="ONTVANGSTDATUM"/>
+													<xs:enumeration value="THT-DATUM"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_SERIENR_REGISTREREN" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_SERIENR_AUTO_NUM" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_SERIENR_AUTO_NUM_TEKST_VOOR" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_SERIENR_AUTO_NUM_VOLGNR" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="INT10"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_SERIENR_AUTO_NUM_UITVULLEN" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_SERIENR_AUTO_NUM_LENGTE" default="2" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_SERIENR_AUTO_NUM_TEKST_ACHTER" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_SERIENR_REGISTRATIEMOMENT" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="BIJ_VERKOOP"/>
+													<xs:enumeration value="BIJ_ONTVANGST"/>
+													<xs:enumeration value=""/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_SERIENR_TOEVOEGEN_BIJ_VERKOOP" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="NIETTOEGESTAAN"/>
+													<xs:enumeration value="TOEGESTAANZONDERMELDING"/>
+													<xs:enumeration value="TOEGESTAANMETMELDING"/>
+													<xs:enumeration value=""/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_SERIENR_ZOEKVENSTERBIJVERKOOP" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_SERIENR_VERPLICHT_VOOR_VRIJGEVEN_VERZAMELLIJST" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_SERIENR_GARANTIECODE_AUTOM" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_SERIENR_GARANTIECODE" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="UINT3"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ART_MUTATIEDATUM" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="xs:dateTime"/>
+											</xs:simpleType>
+										</xs:element>										
+										<xs:element name="ART_VRIJERUBRIEKEN" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ART_VRIJERUBRIEK" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="ART_VRIJERUBRIEK_NAAM">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="40"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ART_VRIJERUBRIEK_WAARDE" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ART_VOLGARTIKELEN" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ART_VOLGARTIKEL" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="ART_VOLGARTIKEL_ART_NUMMER">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ART_VOLGARTIKEL_AANTAL" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="NegatiefBedrag"/>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ART_MAGAZIJNEN" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ART_MAGAZIJN" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="ART_MAGAZIJN_CODE" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="UINT3"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ART_MAGAZIJN_IS_DEFAULT" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ART_MAGAZIJN_MIN_VOORRAAD" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="NegatiefBedrag"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ART_MAGAZIJN_MAX_VOORRAAD" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="NegatiefBedrag"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ART_MAGAZIJN_DEFAULTLOCATIE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="King_bedragSimple">
+		<xs:annotation>
+			<xs:documentation>Dit type is nodig anders werkt het niet.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="King_bedrag">
+		<xs:annotation>
+			<xs:documentation>Bedrag type wat in KING gebruikt wordt.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="King_bedragSimple"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NegatiefBedrag">
+		<xs:annotation>
+			<xs:documentation>Negatief bedrag waar het nodig is (b.v vervolgartikel)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-9999999999.999"/>
+			<xs:maxInclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UINT3">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="3"/>
+			<xs:maxInclusive value="999"/>
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DECIMALS">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="INT10">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="10"/>
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+  <xs:simpleType name="UINT4">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="4"/>
+ 			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KWALITEIT">
+		<xs:annotation>
+			<xs:documentation>10 Is het beste; 1 is het slechtste; 0 is onbekend/niet van toepassing</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PERCENTAGE_NEG">
+		<xs:restriction base="xs:decimal">
+			<xs:maxInclusive value="100"/>
+			<xs:fractionDigits value="2"/>
+			<xs:minInclusive value="-100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FACTOR">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="999.999"/>
+			<xs:fractionDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

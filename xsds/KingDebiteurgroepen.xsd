@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_DEBITEURGROEPEN">
+		<xs:annotation>
+			<xs:documentation>King debiteurgroepen versie 01-03-2013</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DEBITEURGROEPEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DEBITEURGROEP" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="DG_NUMMER">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="999"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DG_OMSCHRIJVING" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DG_ORDERKORTING" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="PERCENTAGE_NEG"/>
+											</xs:simpleType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

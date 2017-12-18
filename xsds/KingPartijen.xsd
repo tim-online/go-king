@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 U (http://www.xmlspy.com) by Max Paay (Quadrant Software bv) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_PARTIJEN">
+		<xs:annotation>
+			<xs:documentation>King partijen versie 24-01-2014</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ARTIKELEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ARTIKEL" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ART_NUMMER">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PARTIJEN">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="PARTIJ" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="PARTIJ_NUMMER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_OMSCHRIJVING" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="40"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_LEVERANCIER" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="UINT10"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_NUMMER_BIJ_LEVERANCIER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_VALUTACODE_INKOOPPRIJS" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_INKOOPPRIJS" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BEDRAG"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_KOSTPRIJS" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BEDRAG"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_PRODUCTIEDATUM" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="xs:date"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_GEBLOKKEERD_VOOR_MAGAZIJNONTVANGST" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_BTWCODE_VERKOOP" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="UINT3"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:choice minOccurs="0">
+																	<xs:element name="PARTIJ_VERKOOPPRIJS_INCLBTW" type="BEDRAG"/>
+																	<xs:element name="PARTIJ_VERKOOPPRIJS_EXCLBTW" nillable="true">
+																		<xs:simpleType>
+																			<xs:list itemType="BEDRAG"/>
+																		</xs:simpleType>
+																	</xs:element>
+																</xs:choice>
+																<xs:choice minOccurs="0">
+																	<xs:element name="PARTIJ_KORTINGSBEDRAG" nillable="true">
+																		<xs:simpleType>
+																			<xs:list itemType="DECIMAL"/>
+																		</xs:simpleType>
+																	</xs:element>
+																	<xs:element name="PARTIJ_KORTINGSPERCENTAGE" nillable="true">
+																		<xs:simpleType>
+																			<xs:list itemType="PERCENTAGE_NEG"/>
+																		</xs:simpleType>
+																	</xs:element>
+																</xs:choice>
+																<xs:element name="PARTIJ_VERKOOP_TOEGESTAAN_VANAF" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="xs:date"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_VERKOOP_TOEGESTAAN_TM" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="xs:date"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_THT_DATUM" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="xs:date"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_GEBLOKKEERD_VOOR_VERKOOP" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_OPMERKING" type="xs:string" minOccurs="0"/>
+																<xs:element name="PARTIJ_TEKSTWIJZIGEN_BIJ_ORDERINVOER" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PARTIJ_FACTUURTEKSTEN" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="PARTIJ_FACTUURTEKST" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="PARTIJ_FACTUURTEKST_TAALCODE">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="3"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="PARTIJ_FACTUURTEKST_TEKST" type="xs:string"/>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BEDRAG">
+		<xs:annotation>
+			<xs:documentation>positief bedrag</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UINT3">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DECIMAL">
+		<xs:annotation>
+			<xs:documentation>Bedoelt voor negatieve bedragen waar het nodig is</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-9999999999.999"/>
+			<xs:maxInclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PERCENTAGE_NEG">
+		<xs:restriction base="xs:decimal">
+			<xs:maxInclusive value="100"/>
+			<xs:fractionDigits value="2"/>
+			<xs:minInclusive value="-100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UINT10">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

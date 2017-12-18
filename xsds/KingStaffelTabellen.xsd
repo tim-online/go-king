@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_STAFFELTABELLEN">
+		<xs:annotation>
+			<xs:documentation>King staffeltabellen versie 04-02-2013</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="STAFFELTABELLEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="STAFFELTABEL" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="STAFFELTABELKOP">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="STK_CODE">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="10"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="STK_OMSCHRIJVING" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="40"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="STK_KORTINGSOORT">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="BEDRAG"/>
+																<xs:enumeration value="PERCENTAGE"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="STAFFELTABELREGELS">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="STAFFELTABELREGEL" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="STR_VANAFAANTAL">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:decimal">
+																			<xs:maxInclusive value="9999999999.999"/>
+																			<xs:minInclusive value="0"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:choice>
+																	<xs:annotation>
+																		<xs:documentation>afhankelijk van STK_KORTINGSOORT</xs:documentation>
+																	</xs:annotation>
+																	<xs:element name="STR_KORTINGSBEDRAG">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:decimal">
+																				<xs:minInclusive value="-9999999999.999"/>
+																				<xs:maxInclusive value="9999999999.999"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element>
+																	<xs:element name="STR_KORTINGSPERCENTAGE">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:decimal">
+																				<xs:minInclusive value="-100.00"/>
+																				<xs:maxInclusive value="100.00"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element>
+																</xs:choice>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_BTWCODES">
+		<xs:annotation>
+			<xs:documentation>King BTW-codes versie 24-01-2014</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="BTWCODES">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="BTWCODE" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="BTW_CODE">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="999"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="BTW_PERCENTAGE">
+											<xs:simpleType>
+												<xs:restriction base="xs:double">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="100"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="BTW_REKENINGNUMMER">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="BTW_SOORT" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="AFDRAGEN"/>
+													<xs:enumeration value="VERREKENEN"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="BTW_INCL_OF_EXCL" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="INCL"/>
+													<xs:enumeration value="EXCL"/>
+													<xs:enumeration value="GEENVOORKEUR"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="BTW_AANGIFTE_RUBRIEK" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="GEEN"/>
+													<xs:enumeration value="1a"/>
+													<xs:enumeration value="1b"/>
+													<xs:enumeration value="1c"/>
+													<xs:enumeration value="1d"/>
+													<xs:enumeration value="1e"/>
+													<xs:enumeration value="2a"/>
+													<xs:enumeration value="3a"/>
+													<xs:enumeration value="3b"/>
+													<xs:enumeration value="3c"/>
+													<xs:enumeration value="4a"/>
+													<xs:enumeration value="4b"/>
+													<xs:enumeration value="5b"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="BTW_AANGIFTE_PERCENTAGE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:double">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="100"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="BTW_VERLEGD" type="BOOL" minOccurs="0"/>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

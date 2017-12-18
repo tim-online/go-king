@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_JOURNAAL">
+		<xs:annotation>
+			<xs:documentation>King boekingsgangen versie 04-03-2015</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="BOEKINGSGANGEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="BOEKINGSGANG" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="BG_OMSCHRIJVING" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="BG_DEFINITIEF" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="JOURNAALPOSTEN">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="JOURNAALPOST" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="JP_DAGBOEKCODE">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="10"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="JP_BOEKDATUM" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="xs:date"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="JP_STUKNUMMER" default="0" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:integer">
+																			<xs:maxExclusive value="10000000000"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="JP_OMSCHRIJVING" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="40"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="JOURNAALREGELS">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="JOURNAALREGEL" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:all>
+																						<xs:element name="JR_VOLGNUMMER" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="UINT3"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_REKENINGNUMMER">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="28"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_BOEKDATUM" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="xs:date"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_BOEKZIJDE">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:enumeration value="DEB"/>
+																									<xs:enumeration value="CRED"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_VALUTACODE">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="3"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_VALUTABEDRAG">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:decimal">
+																									<xs:totalDigits value="12"/>
+																									<xs:fractionDigits value="2"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_OMSCHRIJVING" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="40"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_FACTUURNUMMER" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="40"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_FACTUURDATUM" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="xs:date"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_VERVALDATUM" nillable="true" minOccurs="0">
+																							<xs:simpleType>                                              
+																								<xs:list itemType="xs:date"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_BETALINGSKENMERK" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="24"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_AANTAL" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="FLOAT"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_ARCHIEFSTUK_NUMMER" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_ARCHIEFSTUK_EXTERN_ID" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="JR_OPENSTAANDE_POST_GEFIATTEERD" type="BOOL" default="true" minOccurs="0"/>
+																						<xs:element name="JR_OPENSTAANDE_POST_FIATTERING_GEWIJZIGD_DOOR" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="40"/>
+																								</xs:restriction>
+																							</xs:simpleType>                                            
+																						</xs:element>
+																						<xs:element name="JR_OPENSTAANDE_POST_FIATTERING_GEWIJZIGD_OP" minOccurs="0">                                            
+																							<xs:simpleType>
+																								<xs:list itemType="xs:dateTime"/>
+																							</xs:simpleType>
+																						</xs:element>                                            
+																						<xs:element name="HULPREKENING" minOccurs="0">
+																							<xs:complexType>
+																								<xs:all>
+																									<xs:element name="HULP_SOORT">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:string">
+																												<xs:enumeration value="BTW"/>
+																												<xs:enumeration value="BETVS"/>
+																												<xs:enumeration value="KRSVS"/>
+																												<xs:enumeration value="KREDBEP"/>
+																												<xs:enumeration value="BETKORT"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																									<xs:element name="HULP_BTWCODE" minOccurs="0">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:integer">
+																												<xs:maxInclusive value="999"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																									<xs:element name="HULP_REKENINGNUMMER" minOccurs="0">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:string">
+																												<xs:maxLength value="28"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																									<xs:element name="HULP_BOEKZIJDE">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:string">
+																												<xs:enumeration value="DEB"/>
+																												<xs:enumeration value="CRED"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																									<xs:element name="HULP_VALUTACODE">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:string">
+																												<xs:maxLength value="3"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																									<xs:element name="HULP_VALUTABEDRAG">
+																										<xs:simpleType>
+																											<xs:restriction base="xs:decimal">
+																												<xs:totalDigits value="12"/>
+																												<xs:fractionDigits value="2"/>
+																											</xs:restriction>
+																										</xs:simpleType>
+																									</xs:element>
+																								</xs:all>
+																							</xs:complexType>
+																						</xs:element>
+																					</xs:all>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UINT3">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FLOAT">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="12"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

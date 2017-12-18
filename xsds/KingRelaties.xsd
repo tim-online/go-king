@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_RELATIES">
+		<xs:annotation>
+			<xs:documentation>King relaties versie 19-09-2016</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="RELATIES">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="RELATIEBESTANDNUMMER">
+								<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:minInclusive value="0"/>
+										<xs:maxInclusive value="999"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RELATIE" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="NAW_NUMMER" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="INT10"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="NAW_ZOEKCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="NAW_TAALCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="NAW_OPMERKING" type="xs:string" minOccurs="0"/>
+										<xs:element name="NAW_WEBSITE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="250"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="NAW_VESTIGINGADRES" type="KING_ADRES" minOccurs="0"/>
+										<xs:element name="NAW_CORRESPONDENTIEADRES" type="KING_ADRES" minOccurs="0"/>
+										<xs:element name="NAW_CONTACTPERSONEN" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="NAW_CONTACTPERSOON" type="KING_CONTACTPERSOON" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="NAW_VERZENDADRESSEN" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="NAW_VERZENDADRES" type="KING_VERZEND_ADRES" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="NAW_SELECTIES" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="NAW_SELECTIE" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="NAW_SELECTIECODE">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="action" use="optional">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:enumeration value="delete"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="NAW_BANKREKENINGEN" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="NAW_BANKREKENING" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="BANK_REKENINGNUMMER">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="34"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_REKENINGHOUDER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="70"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_ADRES" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="70"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_POSTCODE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="70"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_WOONPLAATS" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="70"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_LANDCODE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_ISDEFAULTREKENING" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_ISZUIVEREREKENING" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_ISBINNENLAND" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_BIC" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="11"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_KANTOORNAAM" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="70"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_KANTOORADRES" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="70"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_KANTOORPOSTCODE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="70"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_KANTOORPLAATS" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="70"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_KANTOORLANDCODE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BANK_OPMERKING" type="xs:string" minOccurs="0"/>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="NAW_DOCUMENTEN" minOccurs="0">
+											<xs:complexType>
+												<xs:choice>
+													<xs:element name="NAW_DOCUMENT" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation>Dit element is vervallen sinds King 5.41. Deze wordt niet meer geëxporteerd. Het kan nog wel aangeboden worden bij de import, maar dan wordt het genegeerd.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="DOC_SOORT">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value="FACTUUREXCLBTW"/>
+																			<xs:enumeration value="FACTUURINCLBTW"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DOC_LAYOUTNUMMER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:integer">
+																			<xs:minInclusive value="0"/>
+																			<xs:maxInclusive value="999"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="NAW_DOCUMENT_INSTELLING" maxOccurs="unbounded">
+														<xs:annotation>
+															<xs:documentation>Dit element is nieuw sinds King 5.41. Het is de opgevolger van NAW_DOCUMENT.</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:sequence minOccurs="0">
+																<xs:element name="DOC_DOCUMENTSOORT">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value="OFFERTE"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DOC_REGELS">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="DOC_REGEL" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:all>
+																						<xs:element name="DOC_REGELSOORT">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:enumeration value="AFDRUK"/>
+																									<xs:enumeration value="EXTRA_AFDRUK"/>
+																									<xs:enumeration value="AFDRUKFORMAAT"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="DOC_AFDRUKFORMAATNUMMER" minOccurs="0">
+																							<xs:annotation>
+																								<xs:documentation>Alleen verplicht als 'DOCREGELSOORT' 'AFDRUKFORMAAT' is.</xs:documentation>
+																							</xs:annotation>
+																							<xs:simpleType>
+																								<xs:restriction base="xs:integer">
+																									<xs:minInclusive value="0"/>
+																									<xs:maxInclusive value="999"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="DOC_AFDRUKVOORWAARDE" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:enumeration value="ALTIJD"/>
+																									<xs:enumeration value="NOOIT"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="DOC_LAYOUTNUMMER_EXCLBTW" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="UINT3"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="DOC_LAYOUTNUMMER_INCLBTW" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="UINT3"/>
+																							</xs:simpleType>
+																						</xs:element>
+																					</xs:all>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:choice>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="NAW_VRIJERUBRIEKEN" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="NAW_VRIJERUBRIEK" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="NAW_VRIJERUBRIEK_NAAM">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="40"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="NAW_VRIJERUBRIEK_WAARDE" minOccurs="0"/>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="KING_ADRES">
+		<xs:annotation>
+			<xs:documentation>Standaard KING adres blok</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="ADR_NAAM1" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_NAAM2" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_STRAAT" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_HUISNUMMER" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_POSTCODE" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_WOONPLAATS" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_LAND" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_EMAIL" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_TELEFOON" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_TELEFOON2" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_TELEFAX" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_EAN" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="13"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="KING_CONTACTPERSOON">
+		<xs:annotation>
+			<xs:documentation>KING Contactpersoon</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="CP_NUMMER">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="999"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_ACHTERNAAM" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_VOORVOEGSEL" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_VOORLETTERS" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="15"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_VOORNAAM" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_TITEL" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="15"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_ACHTERVOEGSEL" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="15"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_VOLLEDIGENAAM" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_GESLACHT" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ONBEKEND"/>
+						<xs:enumeration value="MAN"/>
+						<xs:enumeration value="VROUW"/>
+						<xs:enumeration value=""/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_TELEFOON" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_TELEFOON2" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_TELEFAX" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_EMAIL" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_NAAMINADRES" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_NAAMINAANHEF" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_NAAMINBRIEF" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="60"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CP_FUNCTIES" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CP_FUNCTIE" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="CP_FUNCTIENUMMER">
+										<xs:simpleType>
+											<xs:restriction base="xs:integer">
+												<xs:minInclusive value="0"/>
+												<xs:maxInclusive value="999"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="CP_VOORKEUR" type="BOOL" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CP_SELECTIES" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CP_SELECTIE" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="CP_SELECTIECODE">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="3"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="action" use="optional">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="delete"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CP_OPMERKING" type="xs:string" minOccurs="0"/>
+			<xs:element name="CP_VRIJERUBRIEKEN" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CP_VRIJERUBRIEK" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="CP_VRIJERUBRIEK_NAAM">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="40"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="CP_VRIJERUBRIEK_WAARDE" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:complexType name="KING_VERZEND_ADRES">
+		<xs:annotation>
+			<xs:documentation>uitbreding van KING_ADRES</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="ADR_NAAM1" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_NAAM2" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_STRAAT" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_HUISNUMMER" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="10"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_POSTCODE" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_WOONPLAATS" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_LAND" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_EMAIL" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="80"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_TELEFOON" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_TELEFOON2" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_TELEFAX" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="25"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_EAN" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="13"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_NUMMER">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:totalDigits value="3"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_OMSCHRIJVING" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_CONTACTPERSOON" nillable="true" minOccurs="0">
+				<xs:simpleType>
+					<xs:list itemType="INT3"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ADR_OPMERKING" type="xs:string" minOccurs="0"/>
+			<xs:element name="ADR_VRIJERUBRIEKEN" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ADR_VRIJERUBRIEK" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="ADR_VRIJERUBRIEK_NAAM">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:maxLength value="40"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:element>
+									<xs:element name="ADR_VRIJERUBRIEK_WAARDE" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:complexType>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="INT10">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="INT3">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UINT3">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

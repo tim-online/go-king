@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_TARIEVEN">
+		<xs:annotation>
+			<xs:documentation>King tarieven versie 04-02-2013</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="TARIEVEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TARIEF" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="TAR_NUMMER">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAR_ZOEKCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="8"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAR_OMSCHRIJVING" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAR_OPBRENGSTGROEP" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="UINT4"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAR_BTWCODEVERKOOP" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="UINT3"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAR_KORTINGSPERCENTAGE" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="PERCENTAGE_NEG"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAR_AANTALDECIMALENPRIJZEN" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="DECIMALS"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAR_AANTALDECIMALENAANTALLEN" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="DECIMALS"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAR_KOSTPRIJS" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="King_bedragSimple"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:choice minOccurs="0">
+											<xs:element name="TAR_VERKOOPPRIJSINCLBTW" type="King_bedrag"/>
+											<xs:element name="TAR_VERKOOPPRIJSEXCLBTW" nillable="true">
+												<xs:simpleType>
+													<xs:list itemType="King_bedragSimple"/>
+												</xs:simpleType>
+											</xs:element>
+										</xs:choice>
+										<xs:element name="TAR_AANTALLEN_BIJHOUDEN" type="BOOL" minOccurs="0"/>
+										<xs:element name="TAR_GEBLOKKEERDVOORVERKOOP" type="BOOL" minOccurs="0"/>
+										<xs:element name="TAR_KOSTPRIJSWIJZIGENBIJORDERINVOER" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAR_TEKSTWIJZIGENBIJORDERINVOER" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAR_WEBTARIEF" default="false" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="BOOL"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAR_WEBWINKELS" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="TAR_WEBWINKEL" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="TAR_WEBWINKEL_ID">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="action" use="optional">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:enumeration value="delete"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="TAR_WEBTONENVANAF" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="xs:date"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAR_WEBTONENTM" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="xs:date"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAR_TAALOMSCHRIJVINGEN" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="TAR_TAALOMSCHRIJVING" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="TAR_TAALOMSCHRIJVING_TAALCODE">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="TAR_TAALOMSCHRIJVING_TEKST" type="xs:string"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="TAR_IS_PROJECT_TARIEF" type="BOOL" minOccurs="0"/>
+										<xs:element name="TAR_PROJECT_GEGEVENS" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence minOccurs="0">
+													<xs:element name="TAR_PROJECT_TARIEFSOORT" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="ACT"/>
+																<xs:enumeration value="MACH"/>
+																<xs:enumeration value=""/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="TAR_PROJECT_EENHEID" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="20"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="TAR_PROJECT_HEEFT_FACTUUREENHEID" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="TAR_PROJECT_FACTUUREENHEID" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="20"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="TAR_PROJECT_FACTUUREENHEIDFACTOR" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="EENHEIDFACTOR"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="TAR_PROJECT_BEREKENVERKOOPPRIJSOBV" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="VERKEXCLBTW"/>
+																<xs:enumeration value="DOORBELPERC"/>
+																<xs:enumeration value=""/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="TAR_PROJECT_VERKOOPPRIJSEXCLBTW" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="King_bedragSimple"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="TAR_PROJECT_DOORBELASTPERCENTAGE" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="DOORBELASTPERCENTAGE"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="TAR_PROJECT_STANDAARD_GEBRUIKSTOESTEMMING" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="TAR_PROJECT_GEBLOKKEERDVOORINVOER" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="King_bedragSimple">
+		<xs:annotation>
+			<xs:documentation>Dit type is nodig anders werkt het niet.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="King_bedrag">
+		<xs:annotation>
+			<xs:documentation>Bedrag type wat in KING gebruikt wordt.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="King_bedragSimple"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PERCENTAGE_NEG">
+		<xs:restriction base="xs:decimal">
+			<xs:maxInclusive value="100"/>
+			<xs:fractionDigits value="2"/>
+			<xs:minInclusive value="-100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UINT3">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EENHEIDFACTOR">
+		<xs:restriction base="xs:double">
+			<xs:maxInclusive value="99.99"/>
+			<xs:minExclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DOORBELASTPERCENTAGE">
+		<xs:restriction base="xs:decimal">
+			<xs:maxInclusive value="10000"/>
+			<xs:fractionDigits value="2"/>
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+  <xs:simpleType name="UINT4">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="4"/>
+ 			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+  	<xs:simpleType name="DECIMALS">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

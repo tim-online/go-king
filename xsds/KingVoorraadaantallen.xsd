@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_VOORRAAD">
+		<xs:annotation>
+			<xs:documentation>King voorraden versie 04-02-2013</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="VOORRADEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="VOORRAAD" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="VRD_ARTNUMMER">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="VRD_ARTZOEKCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="VRD_ARTOMSCHRIJVING" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="VRD_ARTOPBRENGSTGROEP" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:short">
+													<xs:totalDigits value="4"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="VRD_ARTAANTALDECIMALENAANTALLEN" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="VRD_ARTEENHEID" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="VRD_AANTAL">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:totalDigits value="13"/>
+													<xs:fractionDigits value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="VRD_AANTALVRIJEVOORRAAD">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:totalDigits value="13"/>
+													<xs:fractionDigits value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="VRD_AANTALECONOMISCHEVOORRAAD" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:totalDigits value="13"/>
+													<xs:fractionDigits value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="VRD_MAGAZIJNEN" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="VRD_MAGAZIJN" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="VRD_MAG_CODE">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="VRD_MAG_OMSCHRIJVING" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="40"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="VRD_MAG_AANTAL">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:decimal">
+																			<xs:totalDigits value="13"/>
+																			<xs:fractionDigits value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="VRD_MAG_AANTALVRIJEVOORRAAD">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:decimal">
+																			<xs:totalDigits value="13"/>
+																			<xs:fractionDigits value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="VRD_MAG_AANTALECONOMISCHEVOORRAAD">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:decimal">
+																			<xs:totalDigits value="13"/>
+																			<xs:fractionDigits value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="VRD_MAG_LOCATIES" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="VRD_MAG_LOCATIE" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:all>
+																						<xs:element name="VRD_MAG_LOC_CODE">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="VRD_MAG_LOC_OMSCHRIJVING" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="40"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="VRD_MAG_LOC_AANTAL">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:decimal">
+																									<xs:totalDigits value="13"/>
+																									<xs:fractionDigits value="3"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																					</xs:all>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

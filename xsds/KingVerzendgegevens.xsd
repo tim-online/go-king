@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_UITLEVERHISTORIE">
+		<xs:annotation>
+			<xs:documentation>King uitleverhistorie versie 18-08-2014</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PAKBONNEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PAKBON" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="FK_GID" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="INT8"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="UITLEVERNUMMER" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="INT10"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="UITLEVERSOORT" default="LEVERING" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="LEVERING"/>
+													<xs:enumeration value="DIRECTELEVERING"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ORDERS">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ORDER" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="ORDERNUMMER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:integer">
+																			<xs:totalDigits value="10"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORDERCOLLI">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="ORDERCOLLO" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:all>
+																						<xs:element name="COLLO_REGELNUMMER" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:integer">
+																									<xs:totalDigits value="3"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_TYPE" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_TYPE_OMSCHRIJVING" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="40"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_CODE_BIJ_VERVOERDER" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_AANTAL" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="INT10"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_GEWICHT" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="King_bedragSimple"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_VOLUME" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="King_bedragSimple"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_HOOGTE" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="King_bedragSimple"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_BREEDTE" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="King_bedragSimple"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_DIEPTE" nillable="true" minOccurs="0">
+																							<xs:annotation>
+																								<xs:documentation>Dit element zal in een volgende release verdwijnen. Gebruik COLLO_LENGTE.</xs:documentation>
+																							</xs:annotation>
+																							<xs:simpleType>
+																								<xs:list itemType="King_bedragSimple"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_LENGTE" nillable="true" minOccurs="0">
+																							<xs:annotation>
+																								<xs:documentation>Dit element vervangt COLLO_DIEPTE.</xs:documentation>
+																							</xs:annotation>
+																							<xs:simpleType>
+																								<xs:list itemType="King_bedragSimple"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_LENGTE_EENHEID" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="10"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_TRACKTRACE_CODE" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="40"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_TRACKTRACE_URL" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="255"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="COLLO_OPMERKING" type="xs:string" minOccurs="0"/>
+																					</xs:all>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="INT8">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="INT10">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="10"/>
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="King_bedragSimple">
+		<xs:annotation>
+			<xs:documentation>Dit type is nodig anders werkt het niet.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

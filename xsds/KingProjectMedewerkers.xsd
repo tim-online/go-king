@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_PROJECTMEDEWERKERS">
+		<xs:annotation>
+			<xs:documentation>King projectmedewerkers versie 24-01-2014</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PROJECTMEDEWERKERS">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PROJECTMEDEWERKER" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="CP_PROJECT_ZOEKCODE">
+											<xs:annotation>
+												<xs:documentation>In deze xml is dit element uniek.</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_CREDITEURNUMMER" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Als het een interne projectmedewerker is, is dit element afwezig. Als het een externe projectmedewerker is, staat hier het crediteurnummer in.</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:totalDigits value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_NUMMER">
+											<xs:annotation>
+												<xs:documentation>Aangezien interne en externe projectmedewerkers hier bij elkaar staan, is dit nummer op zichzelf niet uniek meer.</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="999"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_ACHTERNAAM" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_VOORVOEGSEL" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_VOORLETTERS" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="15"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_VOORNAAM" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_TITEL" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="15"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_ACHTERVOEGSEL" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="15"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_VOLLEDIGENAAM" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_GESLACHT" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="ONBEKEND"/>
+													<xs:enumeration value="MAN"/>
+													<xs:enumeration value="VROUW"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_TELEFOON" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="25"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_TELEFOON2" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="25"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_TELEFAX" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="25"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_EMAIL" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="80"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_PROJECT_TEAMLEIDERZOEKCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_PROJECT_HEEFTKOSTPRIJS" type="BOOL" minOccurs="0"/>
+										<xs:element name="CP_PROJECT_KOSTPRIJS_PERUUR" type="King_bedrag" minOccurs="0"/>
+										<xs:element name="CP_PROJECT_HEEFTVERKOOPPRIJS" type="BOOL" minOccurs="0"/>
+										<xs:element name="CP_PROJECT_VERKOOPPRIJSEXCLBTW_PERUUR" type="King_bedrag" minOccurs="0"/>
+										<xs:element name="CP_PROJECT_DAGCONTROLE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="NIET_CONTROLEREN"/>
+													<xs:enumeration value="MELDING_GEVEN"/>
+													<xs:enumeration value="NIET_INLEVEREN"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_PROJECT_MINIMUMUREN_PERDAG" type="King_bedrag" minOccurs="0"/>
+										<xs:element name="CP_PROJECT_MAXIMUMUREN_PERDAG" type="King_bedrag" minOccurs="0"/>
+										<xs:element name="CP_PROJECT_WEEKCONTROLE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="NIET_CONTROLEREN"/>
+													<xs:enumeration value="MELDING_GEVEN"/>
+													<xs:enumeration value="NIET_INLEVEREN"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CP_PROJECT_MINIMUMUREN_PERWEEK" type="King_bedrag" minOccurs="0"/>
+										<xs:element name="CP_PROJECT_MAXIMUMUREN_PERWEEK" type="King_bedrag" minOccurs="0"/>
+										<xs:element name="CP_PROJECT_STANDAARDGEBRUIKSTOESTEMMING" type="BOOL" minOccurs="0"/>
+										<xs:element name="CP_PROJECT_STARTDATUM" type="xs:date" minOccurs="0"/>
+										<xs:element name="CP_PROJECT_EINDDATUM" type="xs:date" minOccurs="0"/>
+										<xs:element name="CP_PROJECT_GEBLOKKEERDVOORINVOER" type="BOOL" minOccurs="0"/>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="King_bedragSimple">
+		<xs:annotation>
+			<xs:documentation>Dit type is nodig anders werkt het niet.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxExclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="King_bedrag">
+		<xs:annotation>
+			<xs:documentation>Bedrag type wat in KING gebruikt wordt.</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="King_bedragSimple"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

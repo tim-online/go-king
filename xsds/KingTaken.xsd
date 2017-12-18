@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_TAKEN">
+		<xs:annotation>
+			<xs:documentation>King taken versie 04-03-2015</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="TAKEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TAAK" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="TAAK_GEBRUIKERCODE" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Defaultwaarde is de gebruiker die is ingelogd.</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAAK_TAAKSOORT">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+                    <xs:element name="TAAK_EINDDATUM" nillable="true" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Default is de verwerkingsdatum.</xs:documentation>
+											</xs:annotation>
+                      <xs:simpleType>
+                        <xs:list itemType="xs:date"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="TAAK_BEGINDATUM" nillable="true" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Default is de verwerkingsdatum.</xs:documentation>
+											</xs:annotation>
+                      <xs:simpleType>
+                        <xs:list itemType="xs:date"/>
+                      </xs:simpleType>
+                    </xs:element>
+										<xs:element name="TAAK_PRIORITEIT" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Default is 'NORMAAL'</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="PRIO_GEEN"/>
+													<xs:enumeration value="PRIO_LAAG"/>
+													<xs:enumeration value="PRIO_NORMAAL"/>
+													<xs:enumeration value="PRIO_HOOG"/>
+													<xs:enumeration value="PRIO_URGENT"/>
+                          <xs:enumeration value=""/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAAK_OMSCHRIJVING" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="80"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAAK_OPMERKING" type="xs:string" minOccurs="0"/>
+										<xs:element name="TAAK_NAW_GERELATEERD" type="BOOL" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Als deze 'true' is dan worden de velden NawBestand, NawNummer en Contactpersoon ingelezen.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="TAAK_NAW_BESTAND" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>'D' staat voor debiteuren.
+'C' staat voor crediteuren.
+Een nummer staat voor een ander relatiebestand.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="TAAK_NAW_NUMMER" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAAK_NAW_CONTACTPERSOON" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+                    <xs:element name="TAAK_IN_BEHANDELING" nillable="true" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:list itemType="BOOL"/>
+                      </xs:simpleType>
+                    </xs:element>
+										<xs:element name="TAAK_IN_BEHANDELING_DATUM" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="xs:date"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAAK_IN_BEHANDELING_GEBRUIKERCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+                    <xs:element name="TAAK_AFGEHANDELD" nillable="true" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:list itemType="BOOL"/>
+                      </xs:simpleType>
+                    </xs:element>
+										<xs:element name="TAAK_AFGEHANDELD_DATUM" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="xs:date"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAAK_AFGEHANDELD_GEBRUIKERCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAAK_INGEVOERD_DATUM" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:list itemType="xs:dateTime"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TAAK_INGEVOERD_GEBRUIKERCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

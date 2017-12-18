@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_OPENSTAANDEPOSBONNEN">
+		<xs:annotation>
+			<xs:documentation>King openstaande posbonnen versie 24-01-2014</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="POSBONNEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="POSBON" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="POSKOP" minOccurs="0">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="POK_BONNUMMER" default="0" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:totalDigits value="10"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="POK_BONDATUMTIJD" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="xs:dateTime"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="POK_DEBITEURNUMMER" default="0" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:totalDigits value="10"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="POK_VERKOPERNUMMER" default="0" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:totalDigits value="3"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="POK_BONINCLUSIEFBTW" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="POSREGELS">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="POSREGEL" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="POR_SOORT" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value="ART"/>
+																			<xs:enumeration value="TAR"/>
+																			<xs:enumeration value="TEKST"/>
+																			<xs:enumeration value=""/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="POR_ARTIKELNUMMER" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Artikel, tarief of tekst</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="POR_PARTIJNUMMER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="POR_SERIENUMMER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="POR_TEKST" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="POR_AANTALBESTELD" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:decimal">
+																			<xs:minInclusive value="-9999999999.999"/>
+																			<xs:maxInclusive value="9999999999.999"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="POR_PRIJS" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="POR_KORTINGISPERCENTAGE" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BOOL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="POR_KORTING" default="0" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:decimal">
+																			<xs:minInclusive value="-9999999999.999"/>
+																			<xs:maxInclusive value="9999999999.999"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="POR_BTWCODE" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="UINT3"/>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DECIMAL">
+		<xs:annotation>
+			<xs:documentation>Bedoelt voor negatieve bedragen waar het nodig is</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-9999999999.999"/>
+			<xs:maxInclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UINT3">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

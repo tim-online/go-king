@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_PROJECTMUTATIES">
+		<xs:annotation>
+			<xs:documentation>King projectmutatie bestanden versie 24-01-2014</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PROJECTMUTATIES">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PROJECTMUTATIE" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>projectmutatie bestand met kop en regels</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PROJECTMUTATIEKOP" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>oftewel mutatiebestand</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:all minOccurs="0">
+													<xs:element name="PMK_VOLGNUMMER" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="CARDINAL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="PMK_OMSCHRIJVING" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="40"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="PMK_WEEKSTAAT_MEDEWERKER" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="10"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="PMK_WEEKSTAAT_JAAR" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="UINT4"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="PMK_WEEKSTAAT_WEEK" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="WEEKNUMMER"/>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="PROJECTMUTATIEREGELS">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="PROJECTMUTATIEREGEL" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="PMR_SOORT">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value="ACT"/>
+																			<xs:enumeration value="TAR"/>
+																			<xs:enumeration value="MACH"/>
+																			<xs:enumeration value="ART"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_ARTIKELNUMMER">
+																	<xs:annotation>
+																		<xs:documentation>Activiteit, tarief of artikel. MACH is deprecated sinds 5.42</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_TEKST" type="xs:string" minOccurs="0"/>
+																<xs:element name="PMR_PROJECTCODE">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="10"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_PROJECTONDERDEEL">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="40"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_PROJECTDOSSIERCODE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="8"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_WEEKSTAATREGELNUMMER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="CARDINAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_MEDEWERKER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="10"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_CATEGORIEEN" type="xs:string" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>String met eventueel meerdere categorieen, gescheiden door ;</xs:documentation>
+																	</xs:annotation>
+																</xs:element>
+																<xs:element name="PMR_MUTATIEDATUM" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="xs:date"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_AANTALBESTEED" nillable="true">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_AANTALBESTEED_MINUTEN" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="MINUTES"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_AANTALBESTEED_BEGINTIJD" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="TIME"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_AANTALDECLARABEL" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_AANTALDECLARABEL_MINUTEN" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="MINUTES"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_DIRECTEINKOOP" type="BOOL" default="false" nillable="true" minOccurs="0"/>
+																<xs:element name="PMR_PARTIJNUMMER" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Geen directe inkoop</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_MAGAZIJN" default="0" nillable="true" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Geen directe inkoop</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:restriction base="xs:integer">
+																			<xs:minInclusive value="0"/>
+																			<xs:maxInclusive value="999"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_LOCATIE" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Geen directe inkoop</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_SERIENUMMERS" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Geen directe inkoop</xs:documentation>
+																	</xs:annotation>
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="PMR_SERIENUMMER" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="PMR_SERIENUMMER_NUMMER">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="PMR_LEVERANCIERNUMMER" nillable="true" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Wel directe inkoop</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:list itemType="UINT10"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_KOSTPRIJS" nillable="true" minOccurs="0">
+																	<xs:annotation>
+																		<xs:documentation>Wel direte inkoop</xs:documentation>
+																	</xs:annotation>
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:choice minOccurs="0">
+																	<xs:sequence minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Geen directe inkoop</xs:documentation>
+																		</xs:annotation>
+																	</xs:sequence>
+																	<xs:sequence minOccurs="0">
+																		<xs:annotation>
+																			<xs:documentation>Wel directe inkoop</xs:documentation>
+																		</xs:annotation>
+																	</xs:sequence>
+																</xs:choice>
+																<xs:element name="PMR_VERKOOPPRIJS" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PMR_OPMERKING" type="xs:string" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TIME">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard time</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:annotation>
+				<xs:documentation>vervangt standaard time</xs:documentation>
+			</xs:annotation>
+			<xs:pattern value="(([01][0-9])|(2[0-3]))(:[0-5][0-9])"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MINUTES">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="5999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DECIMAL">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-9999999999.999"/>
+			<xs:maxInclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CARDINAL">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UINT4">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="WEEKNUMMER">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="53"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UINT10">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_PROJECTEN">
+		<xs:annotation>
+			<xs:documentation>King projecten versie 24-01-2014</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PROJECTEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PROJECT" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="PROJ_PROJECTCODE">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PROJ_PROJECTOMSCHRIJVING" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PROJ_PROJECTSTATUS" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="CONCEPT"/>
+													<xs:enumeration value="IN_VOORBEREIDING"/>
+													<xs:enumeration value="ONDERHANDEN"/>
+													<xs:enumeration value="AFGESLOTEN"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PROJ_PROJECTSOORT" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="REGIE"/>
+													<xs:enumeration value="TERMIJN"/>
+													<xs:enumeration value="INTERN"/>
+													<xs:enumeration value="PROEF"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PROJ_PROJECTLEIDER_ZOEKCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PROJ_PROJECTGROEP_CODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="4"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PROJ_DEBITEURNUMMER" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PROJ_HELEFACTUUREENHEDENVERPLICHT" type="BOOL" minOccurs="0"/>
+										<xs:element name="PROJ_STANDAARDGEBRUIKSTOESTEMMING" type="BOOL" minOccurs="0"/>
+										<xs:element name="PROJ_KOSTPRIJSMEDEWERKER_PREVALEERT" type="BOOL" minOccurs="0"/>
+										<xs:element name="PROJ_VERKOOPPRIJSMEDEWERKER_PREVALEERT" type="BOOL" minOccurs="0"/>
+										<xs:element name="PROJ_PRIJSOPGAVESTATUS" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="CONCEPT"/>
+													<xs:enumeration value="VASTGESTELD"/>
+													<xs:enumeration value="HERZIEN"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PROJ_BEGROTINGSSTATUS" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="CONCEPT"/>
+													<xs:enumeration value="VASTGESTELD"/>
+													<xs:enumeration value="HERZIEN"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PROJ_DEFAULTBTWCODE" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="999"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PROJ_OPMERKING" type="xs:string" minOccurs="0"/>
+										<xs:element name="PROJ_ONDERDELEN" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="PROJ_ONDERDEEL" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="PROJ_OND_ZOEKCODE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="40"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PROJ_OND_OMSCHRIJVING" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="80"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PROJ_OND_SOORT" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value="REGIE"/>
+																			<xs:enumeration value="TERMIJN"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PROJ_OND_PARENT_ZOEKCODE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="40"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

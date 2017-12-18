@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_DIRECTELEVERINGEN">
+		<xs:annotation>
+			<xs:documentation>King directe leveringen versie 18-08-2014</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DIRECTELEVERINGEN" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DIRECTELEVERING" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="DIRECTELEVERINGKOP" minOccurs="0">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="DLK_ONTVANGSTNUMMER" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="UINT10"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_LEVERANCIERNUMMER" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="UINT10"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_LEVERANCIEREANCODE" type="EANCODE" nillable="true" minOccurs="0"/>
+													<xs:element name="DLK_ONTVANGSTDATUM" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="xs:date"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_VALUTA" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="3"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_BEDRAG" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="DECIMAL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_BETALINGSCONDITIE" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="INT3"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_AANGEMAAKTDOOR" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="40"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_AANGEMAAKTOP" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="xs:date"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_OMSCHRIJVING" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="40"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_PAKBONNUMMERLEVERANCIER" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="20"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_OPMERKING" type="xs:string" minOccurs="0"/>
+													<xs:element name="DLK_FACTUURBOEKINGMAKEN" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_FACTUURNUMMER" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="40"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_FACTUURDATUM" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="xs:date"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_VERVALDATUM" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="xs:date"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DLK_BETALINGSKENMERK" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="24"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="DIRECTELEVERINGREGELS" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="DIRECTELEVERINGREGEL" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="DLR_SOORT" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="3"/>
+																			<xs:enumeration value="ART"/>
+																			<xs:enumeration value="TAR"/>
+																			<xs:enumeration value=""/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_ARTIKELNUMMER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_ARTIKELEANCODE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="14"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_ARTIKELNUMMERLEVERANCIER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_BESTELNUMMER" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="UINT10"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_BESTELREGELNUMMER" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="INT5"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_PARTIJNUMMER" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_INKOOPEENHEID" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_VOORRAADEENHEDENININKOOPEENHEID" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:decimal">
+																			<xs:minInclusive value="-9999999999.999"/>
+																			<xs:maxInclusive value="9999999999.999"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_AANTALONTVANGEN" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:decimal">
+																			<xs:minInclusive value="-9999999999.999"/>
+																			<xs:maxInclusive value="9999999999.999"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_INKOOPPRIJSPER" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value="INKOOPEENHEID"/>
+																			<xs:enumeration value="AANTALVOORRAADEENHEDEN"/>
+																			<xs:enumeration value=""/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_PRIJS" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="BEDRAG"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_KORTINGSBEDRAG" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_KORTINGSPERCENTAGE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:decimal">
+																			<xs:minInclusive value="-100.00"/>
+																			<xs:maxInclusive value="100.00"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_BTWCODE" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="INT3"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_AANTALCORRECTIE" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:list itemType="DECIMAL"/>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="DLR_OPMERKING" type="xs:string" minOccurs="0"/>
+																<xs:element name="DIRECTELEVERINGREGELDETAILS" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="DIRECTELEVERINGREGELDETAIL" minOccurs="0" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:all>
+																						<xs:element name="DLRD_SERIENUMMER" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="DLRD_AANTALONTVANGEN" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="DECIMAL"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="DLRD_AANTALCORRECTIE" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="DECIMAL"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="DLRD_ORDERNUMMER" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="INT10"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="DLRD_ORDERREGELNUMMER" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:list itemType="UINT3"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="DLRD_BESTELREGELSOORT" nillable="true" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:enumeration value="BESTELLING"/>
+																									<xs:enumeration value="VERKOOPORDER"/>
+																									<xs:enumeration value=""/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																					</xs:all>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DECIMAL">
+		<xs:annotation>
+			<xs:documentation>Bedoelt voor negatieve bedragen waar het nodig is</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-9999999999.999"/>
+			<xs:maxInclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="INT10">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="10"/>
+			<xs:minInclusive value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="INT5">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="5"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BEDRAG">
+		<xs:annotation>
+			<xs:documentation>positief bedrag</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999999.999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="INT3">
+		<xs:restriction base="xs:integer">
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UINT3">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999"/>
+			<xs:totalDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="UINT10">
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="9999999999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EANCODE">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="14"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_VERZAMELLIJST">
+		<xs:annotation>
+			<xs:documentation>King verzamellijst versie 04-02-2013</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ORDERS">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ORDER" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ORDERKOP">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="ORK_ORDERNUMMER">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:totalDigits value="10"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ORK_VERZAMELLIJST_VERWERKT" type="BOOL" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>Door dit element op true te zetten wordt de order na inlezen op status "Verzamellijst verwerkt" gezet. Dit gebeurt alleen als de originele orderstaut sop "Verzamellijst afgedrukt" stond.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="ORK_LEVERDATUM" type="xs:date" nillable="true" minOccurs="0"/>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="ORDERREGELS" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ORDERREGEL" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="ORR_REGELNUMMER" type="xs:integer"/>
+																<xs:element name="ORR_AANTALDEZELEVERING" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:decimal">
+																			<xs:minInclusive value="-9999999999.999"/>
+																			<xs:maxInclusive value="9999999999.999"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORR_MAGAZIJNCODE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:integer">
+																			<xs:minInclusive value="0"/>
+																			<xs:maxInclusive value="999"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ORDERREGELDETAILS" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="ORDERREGELDETAIL" minOccurs="0" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="ORD_MAGAZIJNCODE" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:integer">
+																									<xs:minInclusive value="0"/>
+																									<xs:maxInclusive value="999"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ORD_LOCATIECODE" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ORD_PARTIJNUMMER" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ORD_SERIENUMMER" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="ORD_AANTALDEZELEVERING" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:decimal">
+																									<xs:minInclusive value="-9999999999.999"/>
+																									<xs:maxInclusive value="9999999999.999"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

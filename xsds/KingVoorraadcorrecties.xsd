@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_VOORRAADCORRECTIES">
+		<xs:annotation>
+			<xs:documentation>King voorraadcorrecties versie 24-01-2014</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="VOORRAADCORRECTIES">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="VOORRAADCORRECTIE" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="VOORRAADCORRECTIE_KOP">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="VCK_CORRECTIESOORT">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:minInclusive value="0"/>
+																<xs:maxInclusive value="999"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="VCK_NUMMER" default="0" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:minInclusive value="0"/>
+																<xs:maxInclusive value="9999999999"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="VCK_VOORRAADMUTATIESOORT" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="BEGINVOORRAAD"/>
+																<xs:enumeration value="INVENTARISATIE"/>
+																<xs:enumeration value="INTERNGEBRUIK"/>
+																<xs:enumeration value="UITVAL"/>
+																<xs:enumeration value="MAGVERPLAATSING"/>
+																<xs:enumeration value="OVERIG"/>
+																<xs:enumeration value=""/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="VCK_DIRECTVERWERKEN" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="BOOL"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="VCK_DAGBOEK" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="10"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="VCK_OMSCHRIJVING" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="40"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="VCK_TEGENBOEKEN_OP" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="PARAGRAAF"/>
+																<xs:enumeration value="DAGBOEK"/>
+																<xs:enumeration value="ZELFOPGEVEN"/>
+																<xs:enumeration value=""/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="VCK_REKENINGNUMMER" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="28"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="VCK_AANMAAKDATUM" nillable="true" minOccurs="0">
+														<xs:simpleType>
+															<xs:list itemType="xs:dateTime"/>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="VCK_NEGVOORRAAD" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:enumeration value="NIET"/>
+																<xs:enumeration value="TOEGESTAANGEENMELDING"/>
+																<xs:enumeration value="TOEGESTAANMELDING"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="VOORRAADCORRECTIE_REGELS">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="VOORRAADCORRECTIEREGEL" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:all>
+																<xs:element name="VCR_ARTIKEL">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="VCR_PARTIJ" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="VCR_MAGAZIJN" default="0" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:integer">
+																			<xs:minInclusive value="0"/>
+																			<xs:maxInclusive value="999"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="VCR_LOCATIE" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="20"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="VCR_SOORTAANTAL" nillable="true" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value="MUTATIE"/>
+																			<xs:enumeration value="VOORRAAD"/>
+																			<xs:enumeration value=""/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="VCR_AANTAL">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:double">
+																			<xs:minInclusive value="-999999999999999"/>
+																			<xs:maxInclusive value="999999999999999"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="VOORRAADCORRECTIESERIENUMMERS" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="VOORRAADCORRECTIESERIENUMMER" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="VCS_SERIENUMMER">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="20"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:all>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="BOOL">
+		<xs:annotation>
+			<xs:documentation>vervangt standaard boolean</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="false"/>
+			<xs:enumeration value="true"/>
+			<xs:enumeration value="False"/>
+			<xs:enumeration value="True"/>
+			<xs:enumeration value="FALSE"/>
+			<xs:enumeration value="TRUE"/>
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

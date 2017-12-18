@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="KING_PRIJSAFSPRAKEN">
+		<xs:annotation>
+			<xs:documentation>King prijsafspraken versie 24-01-2014</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PRIJSAFSPRAKEN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PRIJSAFSPRAAK" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="PRA_GID" default="0" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Dit nummer ter identificatie of het onderstaande blok gebruiken van PRA_SOORTPRIJSAFSPRAAK.</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:totalDigits value="8"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PRA_SOORTPRIJSAFSPRAAK" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Verplicht afhankelijk of PRA_GID is ingevuld.</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="DEB_ART"/>
+													<xs:enumeration value="DEB_OPBRGRP"/>
+													<xs:enumeration value="DEBGRP_ART"/>
+													<xs:enumeration value="DEBGRP_OPBRGRP"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PRA_DEBITEURNUMMER" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Verplicht afhankelijk van PRA_SOORTAFSPRAAK</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:totalDigits value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PRA_DEBITEURGROEPNUMMER" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Verplicht afhankelijk van PRA_SOORTAFSPRAAK</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="999"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PRA_ARTIKELNUMMER" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Verplicht afhankelijk van PRA_SOORTAFSPRAAK</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PRA_OPBRENGSTGROEPNUMMER" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Verplicht afhankelijk van PRA_SOORTAFSPRAAK                  Alleen cijfers, 0, 00, 000 en 0000 zijn ook mogelijk</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="4"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PRA_TYPEPRIJSAFSPRAAK">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="PRIJS_KORTPERC"/>
+													<xs:enumeration value="PRIJS_KORTBEDR"/>
+													<xs:enumeration value="PRIJS_KORTSTAF"/>
+													<xs:enumeration value="KORTPERC"/>
+													<xs:enumeration value="KORTBEDR"/>
+													<xs:enumeration value="KORTSTAF"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PRA_VALUTACODE" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Verplicht afhankelijk van PRA_TYPEAFSPRAAK</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PRA_INEXBTW" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Verplicht afhankelijk van PRA_TYPEAFSPRAAK</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="EXCLBTW"/>
+													<xs:enumeration value="INCLBTW"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PRA_PRIJS" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Verplicht afhankelijk van PRA_TYPEAFSPRAAK</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:minInclusive value="-9999999999.999"/>
+													<xs:maxInclusive value="9999999999.999"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PRA_KORTINGSPERCENTAGE" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Verplicht afhankelijk van PRA_TYPEAFSPRAAK</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:minInclusive value="-100"/>
+													<xs:maxInclusive value="100"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PRA_KORTINGSBEDRAG" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Verplicht afhankelijk van PRA_TYPEAFSPRAAK</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:minInclusive value="-9999999999.999"/>
+													<xs:maxInclusive value="9999999999.999"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PRA_STAFFELCODE" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Verplicht afhankelijk van PRA_TYPEAFSPRAAK</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PRA_OPMERKING" type="xs:string" minOccurs="0"/>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
