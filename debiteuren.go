@@ -7,7 +7,7 @@ type Debiteuren []Debiteur
 func (d Debiteuren) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	type alias Debiteuren
 	type Document struct {
-		XMLName xml.Name `xml:"KING_DEBITEUREN"`
+		XMLName xml.Name `xml:"KING_DEBITEUREN" json:"-"`
 
 		Debiteuren alias `xml:"DEBITEUREN>DEBITEUR"`
 	}
@@ -26,7 +26,7 @@ type VerzendadresSoort string
 type OrderkortingSoort string
 
 type Debiteur struct {
-	XMLName xml.Name `xml:"DEBITEUR"`
+	XMLName xml.Name `xml:"DEBITEUR" json:"-"`
 
 	NawNummer                    int                    `xml:"NAW_NUMMER,omitempty"`
 	NawZoekcode                  string                 `xml:"NAW_ZOEKCODE"`

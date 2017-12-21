@@ -1,6 +1,7 @@
 package king
 
 import (
+	"encoding/json"
 	"encoding/xml"
 	"fmt"
 	"time"
@@ -36,6 +37,14 @@ func (t Time) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	return e.EncodeElement(t, start)
 }
 
+func (t Time) MarshalJSON() ([]byte, error) {
+	if t.IsZero() {
+		return json.Marshal(nil)
+	}
+
+	return json.Marshal(t.String())
+}
+
 type Date struct {
 	date.Date
 }
@@ -46,4 +55,12 @@ func (d Date) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	}
 
 	return e.EncodeElement(d.String(), start)
+}
+
+func (d Date) MarshalJSON() ([]byte, error) {
+	if d.IsZero() {
+		return json.Marshal(nil)
+	}
+
+	return json.Marshal(d.String())
 }

@@ -8,7 +8,7 @@ import (
 )
 
 type Journaal struct {
-	XMLName xml.Name `xml:"KING_JOURNAAL"`
+	XMLName xml.Name `xml:"KING_JOURNAAL" json:"-"`
 
 	Boekingsgangen Boekingsgangen `xml:"BOEKINGSGANGEN>BOEKINGSGANG"`
 }
@@ -41,17 +41,17 @@ type Journaalregel struct {
 	Valutacode                             string       `xml:"JR_VALUTACODE"`
 	Valutabedrag                           Money        `xml:"JR_VALUTABEDRAG"`
 	Omschrijving                           string       `xml:"JR_OMSCHRIJVING"`
-	Factuurnummer                          string       `xml:"JR_FACTUURNUMMER"`
+	Factuurnummer                          string       `xml:"JR_FACTUURNUMMER,omitempty"`
 	Factuurdatum                           Date         `xml:"JR_FACTUURDATUM"`
 	Vervaldatum                            Date         `xml:"JR_VERVALDATUM"`
-	Betalingskenmerk                       string       `xml:"JR_BETALINGSKENMERK"`
-	Aantal                                 float64      `xml:"JR_AANTAL"`
-	ArchiefstukNummer                      string       `xml:"JR_ARCHIEFSTUK_NUMMER"`
-	ArchiefstukExternID                    string       `xml:"JR_ARCHIEFSTUK_EXTERN_ID"`
-	OpenstaandePostGefiatteerd             bool         `xml:"JR_OPENSTAANDE_POST_GEFIATTEERD"`
-	OpenstaandePostFiatteringGewijzigdDoor string       `xml:"JR_OPENSTAANDE_POST_FIATTERING_GEWIJZIGD_DOOR"`
-	OpenstaandePostFiatteringGewijzigdOp   Time         `xml:"JR_OPENSTAANDE_POST_FIATTERING_GEWIJZIGD_OP"`
-	Hulprekening                           Hulprekening `xml:"HULPREKENING"`
+	Betalingskenmerk                       string       `xml:"JR_BETALINGSKENMERK,omitempty"`
+	Aantal                                 float64      `xml:"JR_AANTAL,omitempty"`
+	ArchiefstukNummer                      string       `xml:"JR_ARCHIEFSTUK_NUMMER,omitempty"`
+	ArchiefstukExternID                    string       `xml:"JR_ARCHIEFSTUK_EXTERN_ID,omitempty"`
+	OpenstaandePostGefiatteerd             bool         `xml:"JR_OPENSTAANDE_POST_GEFIATTEERD,omitempty"`
+	OpenstaandePostFiatteringGewijzigdDoor string       `xml:"JR_OPENSTAANDE_POST_FIATTERING_GEWIJZIGD_DOOR,omitempty"`
+	OpenstaandePostFiatteringGewijzigdOp   Time         `xml:"JR_OPENSTAANDE_POST_FIATTERING_GEWIJZIGD_OP,omitempty"`
+	Hulprekening                           Hulprekening `xml:"HULPREKENING,omitempty"`
 }
 
 func (j Journaalregel) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
@@ -72,6 +72,10 @@ type Hulprekening struct {
 	Boekzijde      Boekzijde `xml:"HULP_BOEKZIJDE"`
 	Valutacode     string    `xml:"HULP_VALUTACODE"`
 	Valutabedrag   Money     `xml:"HULP_VALUTABEDRAG"`
+}
+
+func (h Hulprekening) IsEmpty() bool {
+	return h.Soort == "" && h.Btwcode == 0 && h.Rekeningnummer == "" && h.Boekzijde == "" && h.Valutacode == "" && h.Valutabedrag == 0.0
 }
 
 type Btwcode int
