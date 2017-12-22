@@ -1,6 +1,10 @@
 package king
 
-import "encoding/xml"
+import (
+	"encoding/xml"
+
+	"github.com/tim-online/go-king/omitempty"
+)
 
 type Debiteuren []Debiteur
 
@@ -28,72 +32,92 @@ type OrderkortingSoort string
 type Debiteur struct {
 	XMLName xml.Name `xml:"DEBITEUR" json:"-"`
 
-	NawNummer                    int                    `xml:"NAW_NUMMER,omitempty"`
-	NawZoekcode                  string                 `xml:"NAW_ZOEKCODE"`
-	NawBetalingsConditie         int                    `xml:"NAW_BETALINGSCONDITIE,omitempty"`
-	NawLeveringsConditie         string                 `xml:"NAW_LEVERINGSCONDITIE,omitempty"`
-	NawValutacode                int                    `xml:"NAW_VALUTACODE,omitempty"`
-	NawBtwcode                   int                    `xml:"NAW_BTWCODE,omitempty"`
-	NawTaalcode                  int                    `xml:"NAW_TAALCODE,omitempty"`
-	NawKredietlimiet             Decimal                `xml:"NAW_KREDIETLIMIET,omitempty"`
-	NawTegenrekening             string                 `xml:"NAW_TEGENREKENING"`
-	NawAanmaningstype            AanmaningsType         `xml:"NAW_AANMANINGSTYPE"`
-	NawBtwnummer                 string                 `xml:"NAW_BTWNUMMER"`
-	NawDeelleveringToegestaan    DeelleveringToegestaan `xml:"NAW_DEELLEVERINGTOEGESTAAN,omitempty"`
-	NawApartefacturen            AparteFacturen         `xml:"NAW_APARTEFACTUREN,omitempty"`
-	NawFacturereninexbtw         FacturenInExBtw        `xml:"NAW_FACTURERENINEXBTW"`
-	NawFactuuradressoort         FactuuradresSoort      `xml:"NAW_FACTUURADRESSOORT,omitempty"`
-	NawVerzendadressoort         VerzendadresSoort      `xml:"NAW_VERZENDADRESSOORT,omitempty"`
-	NawVerzendadresnummer        int                    `xml:"NAW_VERZENDADRESNUMMER,omitempty"`
-	NawEindbestemmingsoort       string                 `xml:"NAW_EINDBESTEMMINGSOORT"`
-	NawEindbestemmingadresnummer string                 `xml:"NAW_EINDBESTEMMINGADRESNUMMER"`
-	NawVertegenwoordiger         int                    `xml:"NAW_VERTEGENWOORDIGER,omitempty"`
-	NawDebiteurgroep             int                    `xml:"NAW_DEBITEURGROEP,omitempty"`
-	NawAantalkopiefacturen       int                    `xml:"NAW_AANTALKOPIEFACTUREN,omitempty"`
-	NawOrderkortingsoort         OrderkortingSoort      `xml:"NAW_ORDERKORTINGSOORT"`
-	NawOrderkorting              int                    `xml:"NAW_ORDERKORTING,omitempty"`
-	NawContributiecode           string                 `xml:"NAW_CONTRIBUTIECODE"`
-	NawBlokkeerorderinvoer       string                 `xml:"NAW_BLOKKEERORDERINVOER"`
-	NawDefaultVervoerder         string                 `xml:"NAW_DEFAULT_VERVOERDER,omitempty"`
-	NawWebklant                  bool                   `xml:"NAW_WEBKLANT,omitempty"`
-	NawWebwinkels                []Webwinkel            `xml:"NAW_WEBWINKELS"`
-	NawKvknummer                 string                 `xml:"NAW_KVKNUMMER"`
-	NawInkoopcombinatie          bool                   `xml:"NAW_INKOOPCOMBINATIE"`
-	NawDebiteurnummerfactuur     int                    `xml:"NAW_DEBITEURNUMMERFACTUUR,omitempty"`
-	NawDebiteurnummeromzet       int                    `xml:"NAW_DEBITEURNUMMEROMZET,omitempty"`
-	NawDebiteurnummerprijzen     int                    `xml:"NAW_DEBITEURNUMMERPRIJZEN,omitempty"`
-	NawOpmerking                 string                 `xml:"NAW_OPMERKING"`
-	NawWebsite                   string                 `xml:"NAW_WEBSITE"`
-	NawVestigingadres            Adres                  `xml:"NAW_VESTIGINGADRES"`
-	NawCorrespondentieadres      Adres                  `xml:"NAW_CORRESPONDENTIEADRES"`
-	NawContactpersonen           []ContactPersoon       `xml:"NAW_CONTACTPERSONEN"`
-	NawVerzendadressen           []VerzendAdres         `xml:"NAW_VERZENDADRESSEN"`
-	// NawSelecties                 []Selectie             `xml:"NAW_SELECTIES"`
-	// NawBankrekeningen            []Bankrekening         `xml:"NAW_BANKREKENINGEN"`
+	Nummer                    int                    `xml:"NAW_NUMMER,omitempty" json:",omitempty"`
+	Zoekcode                  string                 `xml:"NAW_ZOEKCODE"`
+	BetalingsConditie         int                    `xml:"NAW_BETALINGSCONDITIE,omitempty" json:",omitempty"`
+	LeveringsConditie         string                 `xml:"NAW_LEVERINGSCONDITIE,omitempty" json:",omitempty"`
+	Valutacode                int                    `xml:"NAW_VALUTACODE,omitempty" json:",omitempty"`
+	Btwcode                   int                    `xml:"NAW_BTWCODE,omitempty" json:",omitempty"`
+	Taalcode                  int                    `xml:"NAW_TAALCODE,omitempty" json:",omitempty"`
+	Kredietlimiet             Decimal                `xml:"NAW_KREDIETLIMIET,omitempty" json:",omitempty"`
+	Tegenrekening             string                 `xml:"NAW_TEGENREKENING,omitempty" json:",omitempty"`
+	Aanmaningstype            AanmaningsType         `xml:"NAW_AANMANINGSTYPE,omitempty" json:",omitempty"`
+	Btwnummer                 string                 `xml:"NAW_BTWNUMMER,omitempty" json:",omitempty"`
+	DeelleveringToegestaan    DeelleveringToegestaan `xml:"NAW_DEELLEVERINGTOEGESTAAN,omitempty" json:",omitempty"`
+	Apartefacturen            AparteFacturen         `xml:"NAW_APARTEFACTUREN,omitempty" json:",omitempty"`
+	Facturereninexbtw         FacturenInExBtw        `xml:"NAW_FACTURERENINEXBTW,omitempty" json:",omitempty"`
+	Factuuradressoort         FactuuradresSoort      `xml:"NAW_FACTUURADRESSOORT,omitempty" json:",omitempty"`
+	Verzendadressoort         VerzendadresSoort      `xml:"NAW_VERZENDADRESSOORT,omitempty" json:",omitempty"`
+	Verzendadresnummer        int                    `xml:"NAW_VERZENDADRESNUMMER,omitempty" json:",omitempty"`
+	Eindbestemmingsoort       string                 `xml:"NAW_EINDBESTEMMINGSOORT,omitempty" json:",omitempty"`
+	Eindbestemmingadresnummer string                 `xml:"NAW_EINDBESTEMMINGADRESNUMMER,omitempty" json:",omitempty"`
+	Vertegenwoordiger         int                    `xml:"NAW_VERTEGENWOORDIGER,omitempty" json:",omitempty"`
+	Debiteurgroep             int                    `xml:"NAW_DEBITEURGROEP,omitempty" json:",omitempty"`
+	Aantalkopiefacturen       int                    `xml:"NAW_AANTALKOPIEFACTUREN,omitempty" json:",omitempty"`
+	Orderkortingsoort         OrderkortingSoort      `xml:"NAW_ORDERKORTINGSOORT,omitempty" json:",omitempty"`
+	Orderkorting              int                    `xml:"NAW_ORDERKORTING,omitempty" json:",omitempty"`
+	Contributiecode           string                 `xml:"NAW_CONTRIBUTIECODE" json:",omitempty"`
+	Blokkeerorderinvoer       string                 `xml:"NAW_BLOKKEERORDERINVOER,omitempty" json:",omitempty"`
+	DefaultVervoerder         string                 `xml:"NAW_DEFAULT_VERVOERDER,omitempty" json:",omitempty"`
+	Webklant                  bool                   `xml:"NAW_WEBKLANT,omitempty" json:",omitempty"`
+	Webwinkels                []Webwinkel            `xml:"NAW_WEBWINKELS,omitempty" json:",omitempty"`
+	Kvknummer                 string                 `xml:"NAW_KVKNUMMER,omitempty" json:",omitempty"`
+	Inkoopcombinatie          bool                   `xml:"NAW_INKOOPCOMBINATIE"`
+	Debiteurnummerfactuur     int                    `xml:"NAW_DEBITEURNUMMERFACTUUR,omitempty" json:",omitempty"`
+	Debiteurnummeromzet       int                    `xml:"NAW_DEBITEURNUMMEROMZET,omitempty" json:",omitempty"`
+	Debiteurnummerprijzen     int                    `xml:"NAW_DEBITEURNUMMERPRIJZEN,omitempty" json:",omitempty"`
+	Opmerking                 string                 `xml:"NAW_OPMERKING"`
+	Website                   string                 `xml:"NAW_WEBSITE,omitempty" json:",omitempty"`
+	Vestigingadres            Adres                  `xml:"NAW_VESTIGINGADRES,omitempty" json:",omitempty"`
+	Correspondentieadres      Adres                  `xml:"NAW_CORRESPONDENTIEADRES"`
+	Contactpersonen           []ContactPersoon       `xml:"NAW_CONTACTPERSONEN,omitempty" json:",omitempty"`
+	Verzendadressen           []Adres                `xml:"NAW_VERZENDADRESSEN,omitempty" json:",omitempty"`
+	// Selecties                 []Selectie             `xml:"NAW_SELECTIES"`
+	// Bankrekeningen            []Bankrekening         `xml:"NAW_BANKREKENINGEN"`
 	// nawDocumenten                []Documenten           `xml:"NAW_DOCUMENTEN"`
-	// NawVrijerubrieken            []Rubriek              `xml:"NAW_VRIJERUBRIEKEN"`
+	// Vrijerubrieken            []Rubriek              `xml:"NAW_VRIJERUBRIEKEN"`
+}
+
+func (d Debiteur) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
+	return omitempty.MarshalXML(d, e, start)
+}
+
+func (d Debiteur) MarshalJSON() ([]byte, error) {
+	return omitempty.MarshalJSON(d)
 }
 
 type Webwinkel struct {
 }
 
 type Adres struct {
-	AdrNaam1      string `xml:"ADR_NAAM1"`
-	AdrNaam2      string `xml:"ADR_NAAM2"`
-	AdrStraat     string `xml:"ADR_STRAAT"`
-	AdrHuisnummer string `xml:"ADR_HUISNUMMER"`
-	AdrPostcode   string `xml:"ADR_POSTCODE"`
-	AdrWoonplaats string `xml:"ADR_WOONPLAATS"`
-	AdrLand       string `xml:"ADR_LAND"`
-	AdrEmail      string `xml:"ADR_EMAIL"`
-	AdrTelefoon   string `xml:"ADR_TELEFOON"`
-	AdrTelefoon2  string `xml:"ADR_TELEFOON2"`
-	AdrTelefax    string `xml:"ADR_TELEFAX"`
-	AdrEan        string `xml:"ADR_EAN"`
+	Naam1      string `xml:"ADR_NAAM1"`
+	Naam2      string `xml:"ADR_NAAM2"`
+	Straat     string `xml:"ADR_STRAAT"`
+	Huisnummer string `xml:"ADR_HUISNUMMER"`
+	Postcode   string `xml:"ADR_POSTCODE"`
+	Woonplaats string `xml:"ADR_WOONPLAATS"`
+	Land       string `xml:"ADR_LAND"`
+	Email      string `xml:"ADR_EMAIL"`
+	Telefoon   string `xml:"ADR_TELEFOON"`
+	Telefoon2  string `xml:"ADR_TELEFOON2"`
+	Telefax    string `xml:"ADR_TELEFAX"`
+	Ean        string `xml:"ADR_EAN,omitempty" json:",omitempty"`
+}
+
+func (a Adres) IsEmpty() bool {
+	return a.Naam1 == "" &&
+		a.Naam2 == "" &&
+		a.Straat == "" &&
+		a.Huisnummer == "" &&
+		a.Postcode == "" &&
+		a.Woonplaats == "" &&
+		a.Land == "" &&
+		a.Email == "" &&
+		a.Telefoon == "" &&
+		a.Telefoon2 == "" &&
+		a.Telefax == "" &&
+		a.Ean == ""
 }
 
 type ContactPersoon struct {
-}
-
-type VerzendAdres struct {
 }
