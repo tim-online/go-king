@@ -69,7 +69,7 @@ type Debiteur struct {
 	Opmerking                 string                 `xml:"NAW_OPMERKING"`
 	Website                   string                 `xml:"NAW_WEBSITE,omitempty" json:",omitempty"`
 	Vestigingadres            Adres                  `xml:"NAW_VESTIGINGADRES,omitempty" json:",omitempty"`
-	Correspondentieadres      Adres                  `xml:"NAW_CORRESPONDENTIEADRES"`
+	Correspondentieadres      Adres                  `xml:"NAW_CORRESPONDENTIEADRES,omitempty" json:",omitempty"`
 	Contactpersonen           []ContactPersoon       `xml:"NAW_CONTACTPERSONEN,omitempty" json:",omitempty"`
 	Verzendadressen           []Adres                `xml:"NAW_VERZENDADRESSEN,omitempty" json:",omitempty"`
 	// Selecties                 []Selectie             `xml:"NAW_SELECTIES"`
