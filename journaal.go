@@ -27,7 +27,7 @@ type Journaalposten []Journaalpost
 type Journaalpost struct {
 	DagboekCode    string         `xml:"JP_DAGBOEKCODE"`
 	Boekdatum      Date           `xml:"JP_BOEKDATUM"`
-	Stuknummer     string         `xml:"JP_STUKNUMMER"`
+	Stuknummer     string         `xml:"JP_STUKNUMMER,omitempty"`
 	Omschrijving   string         `xml:"JP_OMSCHRIJVING"`
 	Journaalregels Journaalregels `xml:"JOURNAALREGELS>JOURNAALREGEL,omitempty" json:",omitempty"`
 }
